@@ -1,0 +1,1864 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY foaf "http://xmlns.com/foaf/0.1/‎" >
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.w3.org/2002/07/owl"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/‎">
+    <Ontology rdf:about="http://www.cin.ufpe.br/openCIn/">
+        <rdfs:comment xml:lang="en">This ontology was developed to describe the enviroment where the CIn-UFPE is embebbed, essentially focused on academics and related entities. From this pattern are extracted properties like academic&apos;s interest areas, its taught disciplines, publications, events participations, projects and more.</rdfs:comment>
+        <rdfs:comment xml:lang="pt">Esta ontologia foi desenvolvida para descrever o ambiente acadêmico pelo qual o CIn-UFPE está imerso, essencialmente focada nos docentes e entidades relacionadas. Dela são extraídas as áreas de interesse de cada professor, bem como as disciplinas por ele lecionadas, suas publicações, participações em eventos e os projetos que ele faz parte.</rdfs:comment>
+    </Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.aktors.org/ontology/portal#sub-area-of -->
+
+    <ObjectProperty rdf:about="http://www.aktors.org/ontology/portal#sub-area-of">
+        <rdfs:label xml:lang="en">subAreaOf</rdfs:label>
+        <rdfs:label xml:lang="pt">subÁreaDe</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/www.aktors.org/ontology/portal#KnowledgeArea"/>
+        <rdfs:range rdf:resource="http://www.cin.ufpe.br/openCIn/www.aktors.org/ontology/portal#KnowledgeArea"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/hasArea -->
+
+    <ObjectProperty rdf:about="http://www.cin.ufpe.br/openCIn/hasArea">
+        <rdfs:label xml:lang="en">hasArea</rdfs:label>
+        <rdfs:label xml:lang="pt">possuiArea</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/GraduationProject"/>
+        <rdfs:range rdf:resource="http://www.cin.ufpe.br/openCIn/www.aktors.org/ontology/portal#KnowledgeArea"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/hasBeginDate -->
+
+    <ObjectProperty rdf:about="http://www.cin.ufpe.br/openCIn/hasBeginDate">
+        <rdfs:label xml:lang="en">hasBeginDate</rdfs:label>
+        <rdfs:label xml:lang="pt">possuiDataDeInicio</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/CooperationProject"/>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/Project"/>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="http://www.cin.ufpe.br/openCIn/beginDate"/>
+                <someValuesFrom rdf:resource="&xsd;dateTime"/>
+            </Restriction>
+        </rdfs:range>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/hasCNPJ -->
+
+    <ObjectProperty rdf:about="http://www.cin.ufpe.br/openCIn/hasCNPJ">
+        <rdfs:label xml:lang="en">hasCNPJ</rdfs:label>
+        <rdfs:label xml:lang="pt">possuiCNPJ</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.co-ode.org/ontologies/ont.owl#Empresa"/>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="http://www.cin.ufpe.br/openCIn/cnpj"/>
+                <someValuesFrom rdf:resource="&xsd;string"/>
+            </Restriction>
+        </rdfs:range>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/hasCoordinator -->
+
+    <ObjectProperty rdf:about="http://www.cin.ufpe.br/openCIn/hasCoordinator">
+        <rdfs:label xml:lang="en">hasCoordinator</rdfs:label>
+        <rdfs:label xml:lang="pt">possuiCoordenador</rdfs:label>
+        <rdfs:comment xml:lang="en">has a teacher who coordinates</rdfs:comment>
+        <rdfs:comment xml:lang="pt">Possui um docente que coordena um Projeto de Cooperação</rdfs:comment>
+        <rdfs:range rdf:resource="http://www.aktors.org/ontology/portal#Academic"/>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/CooperationProject"/>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/Project"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/hasCosts -->
+
+    <ObjectProperty rdf:about="http://www.cin.ufpe.br/openCIn/hasCosts">
+        <rdfs:label xml:lang="en">hasCost</rdfs:label>
+        <rdfs:label xml:lang="pt">possuiValor</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/CooperationProject"/>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="http://www.cin.ufpe.br/openCIn/projectCosts"/>
+                <someValuesFrom rdf:resource="&xsd;string"/>
+            </Restriction>
+        </rdfs:range>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/hasDescription -->
+
+    <ObjectProperty rdf:about="http://www.cin.ufpe.br/openCIn/hasDescription">
+        <rdfs:label xml:lang="en">hasDescription</rdfs:label>
+        <rdfs:label xml:lang="pt">possuiDescricao</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/Project"/>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="http://www.cin.ufpe.br/openCIn/description"/>
+                <someValuesFrom rdf:resource="&xsd;string"/>
+            </Restriction>
+        </rdfs:range>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/hasEndDate -->
+
+    <ObjectProperty rdf:about="http://www.cin.ufpe.br/openCIn/hasEndDate">
+        <rdfs:label xml:lang="en">hasEndDate</rdfs:label>
+        <rdfs:label xml:lang="pt">possuiDataDeTermino</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/CooperationProject"/>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/Project"/>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="http://schema.org/endDate"/>
+                <someValuesFrom rdf:resource="&xsd;dateTime"/>
+            </Restriction>
+        </rdfs:range>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/hasHomepage -->
+
+    <ObjectProperty rdf:about="http://www.cin.ufpe.br/openCIn/hasHomepage">
+        <rdfs:label xml:lang="en">hasHomepage</rdfs:label>
+        <rdfs:label xml:lang="pt">possui página na web</rdfs:label>
+        <rdfs:comment xml:lang="en">Some thing or somebody that has some homepage on the Internet</rdfs:comment>
+        <rdfs:comment xml:lang="pt">Algo ou alguém que possui uma página na Web</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/Project"/>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="http://xmlns.com/foaf/spec/#term_homepage"/>
+                <someValuesFrom rdf:resource="&xsd;anyURI"/>
+            </Restriction>
+        </rdfs:range>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/hasLogo -->
+
+    <ObjectProperty rdf:about="http://www.cin.ufpe.br/openCIn/hasLogo">
+        <rdfs:label xml:lang="en">hasLogo</rdfs:label>
+        <rdfs:label xml:lang="pt">possuiLogo</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/GraduationProject"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/hasManager -->
+
+    <ObjectProperty rdf:about="http://www.cin.ufpe.br/openCIn/hasManager">
+        <rdfs:label xml:lang="en">hasManager</rdfs:label>
+        <rdfs:label xml:lang="pt">possuiGerente</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/GraduationProject"/>
+        <rdfs:range rdf:resource="http://www.cin.ufpe.br/openCIn/#Student"/>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="http://xmlns.com/foaf/spec/#term_member"/>
+                <someValuesFrom rdf:resource="&xsd;anyURI"/>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="http://xmlns.com/foaf/spec/#term_member"/>
+                <someValuesFrom rdf:resource="&xsd;string"/>
+            </Restriction>
+        </rdfs:range>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/hasMember -->
+
+    <ObjectProperty rdf:about="http://www.cin.ufpe.br/openCIn/hasMember">
+        <rdfs:label xml:lang="en">hasMember</rdfs:label>
+        <rdfs:label xml:lang="pt">Possui Membro</rdfs:label>
+        <rdfs:comment xml:lang="en">A team that has a member</rdfs:comment>
+        <rdfs:comment xml:lang="pt">Uma equipe que possui um membro</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/Project"/>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="http://xmlns.com/foaf/spec/#term_member"/>
+                <someValuesFrom>
+                    <rdfs:Datatype>
+                        <unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&xsd;anyURI"/>
+                            <rdf:Description rdf:about="&xsd;string"/>
+                        </unionOf>
+                    </rdfs:Datatype>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:range>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/hasPartner -->
+
+    <ObjectProperty rdf:about="http://www.cin.ufpe.br/openCIn/hasPartner">
+        <rdfs:label xml:lang="en">hasPartner</rdfs:label>
+        <rdfs:label xml:lang="pt">possuiParceria</rdfs:label>
+        <rdfs:comment xml:lang="pt">Possui Empresa Parceira</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/CooperationProject"/>
+        <rdfs:range rdf:resource="http://www.co-ode.org/ontologies/ont.owl#Empresa"/>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="http://www.cin.ufpe.br/openCIn/partner"/>
+                <someValuesFrom rdf:resource="&xsd;string"/>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="http://www.cin.ufpe.br/openCIn/partner"/>
+                <someValuesFrom rdf:resource="&xsd;anyURI"/>
+            </Restriction>
+        </rdfs:range>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/hasTechnology -->
+
+    <ObjectProperty rdf:about="http://www.cin.ufpe.br/openCIn/hasTechnology">
+        <rdfs:label xml:lang="en">hasTechnology</rdfs:label>
+        <rdfs:label xml:lang="pt">Possui Tecnologia</rdfs:label>
+        <rdfs:comment xml:lang="pt">Possui tecnologia que fez parte do desenvovimento do projeto</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/GraduationProject"/>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="http://www.cin.ufpe.br/openCIn/technologies"/>
+                <someValuesFrom rdf:resource="&xsd;anyURI"/>
+            </Restriction>
+        </rdfs:range>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="http://www.cin.ufpe.br/openCIn/technologies"/>
+                <someValuesFrom rdf:resource="&xsd;string"/>
+            </Restriction>
+        </rdfs:range>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/hasTerm -->
+
+    <ObjectProperty rdf:about="http://www.cin.ufpe.br/openCIn/hasTerm">
+        <rdfs:label xml:lang="en">hasTerm</rdfs:label>
+        <rdfs:label xml:lang="pt">possuiSemestreLetivo</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/GraduationProject"/>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="http://www.cin.ufpe.br/openCIn/term"/>
+                <someValuesFrom rdf:resource="&xsd;string"/>
+            </Restriction>
+        </rdfs:range>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/hasTitle -->
+
+    <ObjectProperty rdf:about="http://www.cin.ufpe.br/openCIn/hasTitle">
+        <rdfs:label xml:lang="en">hasTitle</rdfs:label>
+        <rdfs:label xml:lang="pt">possuiTitulo</rdfs:label>
+        <rdfs:comment xml:lang="pt">Title of a Project</rdfs:comment>
+        <rdfs:comment xml:lang="pt">Título de um Projeto</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/Project"/>
+        <rdfs:range>
+            <Restriction>
+                <onProperty rdf:resource="http://www.cin.ufpe.br/openCIn/projectTitle"/>
+                <someValuesFrom rdf:resource="&xsd;string"/>
+            </Restriction>
+        </rdfs:range>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/pertenceAUm -->
+
+    <ObjectProperty rdf:about="http://www.cin.ufpe.br/openCIn/pertenceAUm">
+        <rdfs:label xml:lang="en">belongsA</rdfs:label>
+        <rdfs:label xml:lang="pt">pertenceAUm</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/#Discipline"/>
+        <rdfs:range rdf:resource="http://www.cin.ufpe.br/openCIn/www.aktors.org/ontology/portal#Course"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#aPartOf -->
+
+    <ObjectProperty rdf:about="http://www.cin.ufpe.br/openCIn/#aPartOf">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label xml:lang="en">isPartOf</rdfs:label>
+        <rdfs:label xml:lang="pt">fazParteDe</rdfs:label>
+        <rdfs:domain rdf:resource="http://purl.org/vocab/aiiso/schema#KnowledgeGrouping"/>
+        <rdfs:domain rdf:resource="http://www.aktors.org/ontology/portal#Organization"/>
+        <rdfs:range rdf:resource="http://www.aktors.org/ontology/portal#Organization"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#cite -->
+
+    <ObjectProperty rdf:about="http://www.cin.ufpe.br/openCIn/#cite">
+        <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
+        <rdfs:label xml:lang="en">cite</rdfs:label>
+        <rdfs:label xml:lang="pt">cita</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/#NewsItem"/>
+        <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#conferredBy -->
+
+    <ObjectProperty rdf:about="http://www.cin.ufpe.br/openCIn/#conferredBy">
+        <rdfs:label xml:lang="en">conferredBy</rdfs:label>
+        <rdfs:label xml:lang="pt">conferidoPor</rdfs:label>
+        <rdfs:comment xml:lang="pt">Usada para relacionar o Grau Acadêmico e a Organização que a conferiu</rdfs:comment>
+        <rdfs:range rdf:resource="http://www.aktors.org/ontology/portal#Organization"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#creator -->
+
+    <ObjectProperty rdf:about="http://www.cin.ufpe.br/openCIn/#creator">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label xml:lang="en">creator</rdfs:label>
+        <rdfs:label xml:lang="pt">éAutor</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/#Student"/>
+        <rdfs:range rdf:resource="http://www.cin.ufpe.br/openCIn/#Thesis"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#evaluates -->
+
+    <ObjectProperty rdf:about="http://www.cin.ufpe.br/openCIn/#evaluates">
+        <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
+        <rdfs:label xml:lang="en">evaluates</rdfs:label>
+        <rdfs:label xml:lang="pt">avalia</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.aktors.org/ontology/portal#Academic"/>
+        <rdfs:range rdf:resource="http://www.cin.ufpe.br/openCIn/#Thesis"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#fundedBy -->
+
+    <ObjectProperty rdf:about="http://www.cin.ufpe.br/openCIn/#fundedBy">
+        <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
+        <rdfs:label xml:lang="en">fundedBy</rdfs:label>
+        <rdfs:label xml:lang="pt">financiadoPor</rdfs:label>
+        <rdfs:comment xml:lang="pt">Representa a relação entre um projeto e a respectiva organização financiadora</rdfs:comment>
+        <rdfs:range rdf:resource="http://www.aktors.org/ontology/portal#Organization"/>
+        <rdfs:domain rdf:resource="http://www.aktors.org/ontology/portal#Project"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#givenBy -->
+
+    <ObjectProperty rdf:about="http://www.cin.ufpe.br/openCIn/#givenBy">
+        <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
+        <rdfs:label xml:lang="en">givenBy</rdfs:label>
+        <rdfs:label xml:lang="pt">éMinistradoPor</rdfs:label>
+        <rdfs:range rdf:resource="http://www.aktors.org/ontology/portal#Academic"/>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/#Lecture"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#has-association-with -->
+
+    <ObjectProperty rdf:about="http://www.cin.ufpe.br/openCIn/#has-association-with">
+        <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
+        <rdfs:label xml:lang="en">hasAssociationWith</rdfs:label>
+        <rdfs:label xml:lang="pt">possuiAssociacaoCom</rdfs:label>
+        <rdfs:comment xml:lang="pt">Relaciona uma determinada Disciplina com as Áreas de Conhecimento a qual está inserida e associada</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/#Discipline"/>
+        <rdfs:range rdf:resource="http://www.cin.ufpe.br/openCIn/www.aktors.org/ontology/portal#KnowledgeArea"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#hasAreaExpertise -->
+
+    <ObjectProperty rdf:about="http://www.cin.ufpe.br/openCIn/#hasAreaExpertise">
+        <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
+        <rdfs:label xml:lang="en">Has Area of Expertise</rdfs:label>
+        <rdfs:label xml:lang="pt">Tem área de atuação</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.aktors.org/ontology/portal#Academic"/>
+        <rdfs:range rdf:resource="http://www.cin.ufpe.br/openCIn/#ExpertiseArea"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#hasAreaInterest -->
+
+    <ObjectProperty rdf:about="http://www.cin.ufpe.br/openCIn/#hasAreaInterest">
+        <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
+        <rdfs:label xml:lang="en">Has Area of interest</rdfs:label>
+        <rdfs:label xml:lang="pt">Tem Área de Interesse</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.aktors.org/ontology/portal#Academic"/>
+        <rdfs:range rdf:resource="http://www.cin.ufpe.br/openCIn/#InterestArea"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#hasDegrees -->
+
+    <ObjectProperty rdf:about="http://www.cin.ufpe.br/openCIn/#hasDegrees">
+        <rdfs:label xml:lang="en">hasDegrees</rdfs:label>
+        <rdfs:label xml:lang="pt">possuiGraus</rdfs:label>
+        <rdfs:comment xml:lang="pt">Descreve quais Graus Acadêmicos (formações) o Docente possui.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.aktors.org/ontology/portal#Academic"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#hasOccupation -->
+
+    <ObjectProperty rdf:about="http://www.cin.ufpe.br/openCIn/#hasOccupation">
+        <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
+        <rdfs:label xml:lang="en">hasOccupation</rdfs:label>
+        <rdfs:label xml:lang="pt">possuiCargos</rdfs:label>
+        <rdfs:comment xml:lang="pt">Relata quais os cargos pertencentes a uma determinada Organização.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.aktors.org/ontology/portal#Organization"/>
+        <rdfs:range rdf:resource="http://www.cin.ufpe.br/openCIn/#Occupation"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#hasParticipants -->
+
+    <ObjectProperty rdf:about="http://www.cin.ufpe.br/openCIn/#hasParticipants">
+        <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
+        <rdfs:label xml:lang="en">hasParticipants</rdfs:label>
+        <rdfs:label xml:lang="pt">possuiParticipantes</rdfs:label>
+        <rdfs:comment xml:lang="pt">Descreve a conexão entre uma entidade e as respectivas pessoas envolvidas ativamente na sua construção ou sobrevida. </rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.aktors.org/ontology/portal#Organization"/>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/#TemporaryEvent"/>
+        <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#is-sub-area-of -->
+
+    <ObjectProperty rdf:about="http://www.cin.ufpe.br/openCIn/#is-sub-area-of">
+        <rdfs:label xml:lang="en">isSubAreaOf</rdfs:label>
+        <rdfs:label xml:lang="pt">éSubÁreaDe</rdfs:label>
+        <rdfs:subPropertyOf rdf:resource="http://www.aktors.org/ontology/portal#sub-area-of"/>
+        <rdfs:range rdf:resource="http://www.cin.ufpe.br/openCIn/#ExpertiseArea"/>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/#InterestArea"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#isCoSupervisedBy -->
+
+    <ObjectProperty rdf:about="http://www.cin.ufpe.br/openCIn/#isCoSupervisedBy">
+        <rdf:type rdf:resource="&owl;AsymmetricProperty"/>
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label xml:lang="en">isCoSupervisedBy</rdfs:label>
+        <rdfs:label xml:lang="pt">éCoOrientadoPor</rdfs:label>
+        <rdfs:range rdf:resource="http://www.aktors.org/ontology/portal#Academic"/>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/#Student"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#isOccurrenceOf -->
+
+    <ObjectProperty rdf:about="http://www.cin.ufpe.br/openCIn/#isOccurrenceOf">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label xml:lang="en">isOccurrenceOf</rdfs:label>
+        <rdfs:label xml:lang="pt">éOcorrenciaDe</rdfs:label>
+        <rdfs:comment xml:lang="pt">Descreve a qual disciplina a Alocação se refere</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/#Allocation"/>
+        <rdfs:range rdf:resource="http://www.cin.ufpe.br/openCIn/#Discipline"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#isSupervisedBy -->
+
+    <ObjectProperty rdf:about="http://www.cin.ufpe.br/openCIn/#isSupervisedBy">
+        <rdf:type rdf:resource="&owl;AsymmetricProperty"/>
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label xml:lang="en">isSupervisedBy</rdfs:label>
+        <rdfs:label xml:lang="pt">éOrientadoPor</rdfs:label>
+        <rdfs:range rdf:resource="http://www.aktors.org/ontology/portal#Academic"/>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/#Student"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#managed -->
+
+    <ObjectProperty rdf:about="http://www.cin.ufpe.br/openCIn/#managed">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label xml:lang="en">managed</rdfs:label>
+        <rdfs:label xml:lang="pt">administradoPor</rdfs:label>
+        <rdfs:comment xml:lang="pt">Descreve qual Cargo é responsável pela administração de um Centro</rdfs:comment>
+        <rdfs:domain rdf:resource="http://purl.org/vocab/aiiso/schema#Center"/>
+        <rdfs:range rdf:resource="http://www.cin.ufpe.br/openCIn/#Occupation"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#occupiedBy -->
+
+    <ObjectProperty rdf:about="http://www.cin.ufpe.br/openCIn/#occupiedBy">
+        <rdfs:label xml:lang="en">occupiedBy</rdfs:label>
+        <rdfs:label xml:lang="pt">encarregadoPor</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/#Occupation"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.cin.ufpe.br/openCIn/#hasParticipants"/>
+        <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#prerequisite -->
+
+    <ObjectProperty rdf:about="http://www.cin.ufpe.br/openCIn/#prerequisite">
+        <rdf:type rdf:resource="&owl;AsymmetricProperty"/>
+        <rdf:type rdf:resource="&owl;ReflexiveProperty"/>
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:label xml:lang="en">prerequisite</rdfs:label>
+        <rdfs:label xml:lang="pt">prerequisito</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/#Discipline"/>
+        <rdfs:range rdf:resource="http://www.cin.ufpe.br/openCIn/#Discipline"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#presented -->
+
+    <ObjectProperty rdf:about="http://www.cin.ufpe.br/openCIn/#presented">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label xml:lang="en">presented</rdfs:label>
+        <rdfs:label xml:lang="pt">éApresentado</rdfs:label>
+        <rdfs:range rdf:resource="http://www.cin.ufpe.br/openCIn/#Presentation"/>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/#Thesis"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#publishes -->
+
+    <ObjectProperty rdf:about="http://www.cin.ufpe.br/openCIn/#publishes">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label xml:lang="en">publishes</rdfs:label>
+        <rdfs:label xml:lang="pt">publica</rdfs:label>
+        <rdfs:range rdf:resource="http://www.aktors.org/ontology/portal#Academic"/>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/#NewsItem"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#releases -->
+
+    <ObjectProperty rdf:about="http://www.cin.ufpe.br/openCIn/#releases">
+        <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
+        <rdfs:label xml:lang="en">releases</rdfs:label>
+        <rdfs:label xml:lang="pt">divulga</rdfs:label>
+        <rdfs:range rdf:resource="http://www.aktors.org/ontology/portal#Project"/>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/#NewsItem"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#studiesAt -->
+
+    <ObjectProperty rdf:about="http://www.cin.ufpe.br/openCIn/#studiesAt">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label xml:lang="en">studiesAt</rdfs:label>
+        <rdfs:label xml:lang="pt">éMatriculadoEm</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/#Student"/>
+        <rdfs:range rdf:resource="http://www.cin.ufpe.br/openCIn/www.aktors.org/ontology/portal#Course"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#taughtBy -->
+
+    <ObjectProperty rdf:about="http://www.cin.ufpe.br/openCIn/#taughtBy">
+        <rdfs:label xml:lang="en">taughtBy</rdfs:label>
+        <rdfs:label xml:lang="pt">lecionadaPor</rdfs:label>
+        <rdfs:range rdf:resource="http://www.aktors.org/ontology/portal#Academic"/>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/#Allocation"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.cin.ufpe.br/openCIn/#hasParticipants"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#possuiLink -->
+
+    <ObjectProperty rdf:about="http://www.co-ode.org/ontologies/ont.owl#possuiLink">
+        <rdfs:label xml:lang="en">hasLink</rdfs:label>
+        <rdfs:label xml:lang="pt">possuiLink</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/Project"/>
+    </ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://schema.org/endDate -->
+
+    <DatatypeProperty rdf:about="http://schema.org/endDate">
+        <rdfs:label xml:lang="en">endDate</rdfs:label>
+        <rdfs:label xml:lang="pt">Data de Término</rdfs:label>
+        <rdfs:comment xml:lang="en">Data de término de alguma coisa.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The end date and time of the item (in ISO 8601 date format).</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/CooperationProject"/>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/Project"/>
+        <rdfs:range rdf:resource="&xsd;dateTime"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/Local -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/Local">
+        <rdfs:label xml:lang="en">Local</rdfs:label>
+        <rdfs:label xml:lang="pt">Local</rdfs:label>
+        <rdfs:comment xml:lang="pt">Local da publicação</rdfs:comment>
+        <rdfs:domain rdf:resource="http://purl.org/ontology/bibo/Document"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/beginDate -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/beginDate">
+        <rdfs:label xml:lang="en">beginDate</rdfs:label>
+        <rdfs:label xml:lang="pt">Data de Início</rdfs:label>
+        <rdfs:comment xml:lang="pt">Data de início de um projeto</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/CooperationProject"/>
+        <rdfs:range rdf:resource="&xsd;dateTime"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/cnpj -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/cnpj">
+        <rdfs:label>cnpj</rdfs:label>
+        <rdfs:comment xml:lang="pt">Acrônimo de Cadastro Nacional da Pessoa Jurídica. É um cadastro onde todas as pessoas jurídicas e as equiparadas (pessoas físicas que exploram em nome individual atividades com intuito de lucro) são obrigadas a se inscrever antes de iniciar as suas atividades.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.co-ode.org/ontologies/ont.owl#Empresa"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/companyName -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/companyName">
+        <rdfs:label xml:lang="en">companyName</rdfs:label>
+        <rdfs:label xml:lang="pt">Nome da Empresa</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.co-ode.org/ontologies/ont.owl#Empresa"/>
+        <rdfs:range rdf:resource="&xsd;anyURI"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/coordinator -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/coordinator">
+        <rdfs:label xml:lang="en">coordinator</rdfs:label>
+        <rdfs:label xml:lang="pt">coordenador</rdfs:label>
+        <rdfs:comment xml:lang="en">Teacher that coordinates some project</rdfs:comment>
+        <rdfs:comment xml:lang="pt">Docente que exerce função de coordenador de algum projeto</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/CooperationProject"/>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/Project"/>
+        <rdfs:range rdf:resource="&xsd;anyURI"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/description -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/description">
+        <rdfs:label xml:lang="en">description</rdfs:label>
+        <rdfs:label xml:lang="pt">descricao</rdfs:label>
+        <rdfs:comment xml:lang="en">The description is like a definition of something or somebody</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/Project"/>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/Technology"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:domain rdf:resource="&owl;Thing"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/imageLogo -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/imageLogo">
+        <rdfs:label xml:lang="en">logoProject</rdfs:label>
+        <rdfs:label xml:lang="pt">Logo do Projeto</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/GraduationProject"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/managerProject -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/managerProject">
+        <rdfs:label xml:lang="en">managerProject</rdfs:label>
+        <rdfs:label xml:lang="pt">Gerente do Projeto</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/GraduationProject"/>
+        <rdfs:range rdf:resource="&xsd;anyURI"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/menu -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/menu">
+        <rdfs:comment>Ementa de uma disciplina</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/#Discipline"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/name -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/name">
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/#Discipline"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/partner -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/partner">
+        <rdfs:label xml:lang="en">partner</rdfs:label>
+        <rdfs:label xml:lang="pt">Parceria</rdfs:label>
+        <rdfs:comment xml:lang="en">CIn/UFPE partners</rdfs:comment>
+        <rdfs:comment xml:lang="pt">Empresa que forma parceria com o CIn/UFPE</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/CooperationProject"/>
+        <rdfs:range rdf:resource="&xsd;anyURI"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/period -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/period">
+        <rdfs:comment>Período ao qual a disciplina pertence.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/#Discipline"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/projectArea -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/projectArea">
+        <rdfs:label xml:lang="en">projectArea</rdfs:label>
+        <rdfs:label xml:lang="pt">areaProjeto</rdfs:label>
+        <rdfs:comment xml:lang="en">Area related with the project activities</rdfs:comment>
+        <rdfs:comment xml:lang="pt">Área em que o projeto é voltado</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/GraduationProject"/>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/Project"/>
+        <rdfs:range rdf:resource="&xsd;anyURI"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/projectCosts -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/projectCosts">
+        <rdfs:label xml:lang="en">projectCosts</rdfs:label>
+        <rdfs:label xml:lang="pt">valorDoProjeto</rdfs:label>
+        <rdfs:comment xml:lang="pt">Valor do projeto. Recursos que serão gastos ao longo do projeto</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/CooperationProject"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/projectTitle -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/projectTitle">
+        <rdfs:label xml:lang="en">Project Title</rdfs:label>
+        <rdfs:label xml:lang="pt">Título do Projeto</rdfs:label>
+        <rdfs:comment xml:lang="en">Title that refers to some project</rdfs:comment>
+        <rdfs:comment xml:lang="pt">Título para o projeto</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/Project"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/technologies -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/technologies">
+        <rdfs:label xml:lang="en">technologies</rdfs:label>
+        <rdfs:label xml:lang="pt">tecnologias usadas</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/GraduationProject"/>
+        <rdfs:range rdf:resource="&xsd;anyURI"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/term -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/term">
+        <rdfs:label xml:lang="en">term</rdfs:label>
+        <rdfs:label xml:lang="pt">Semestre Letivo</rdfs:label>
+        <rdfs:comment xml:lang="pt">Semestre letivo o qual o projeto foi desenvolvido</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/GraduationProject"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/type -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/type">
+        <rdfs:comment>Tipo de uma disciplina, obrigatoria ou eletiva.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/#Discipline"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#abstract -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/#abstract">
+        <rdfs:label xml:lang="en">Abstract</rdfs:label>
+        <rdfs:label xml:lang="pt">Resumo</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/#Thesis"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#academicDegree -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/#academicDegree">
+        <rdfs:label xml:lang="en">academicDegree</rdfs:label>
+        <rdfs:label xml:lang="pt">Grau Acadêmico</rdfs:label>
+        <rdfs:comment xml:lang="pt">Representa um título conferido e reconhecido por uma Organização, geralmente concedido após a realização de um Curso.</rdfs:comment>
+        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#areaOfDiplomaThesis -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/#areaOfDiplomaThesis">
+        <rdfs:label xml:lang="en">areaOfDiplomaThesis</rdfs:label>
+        <rdfs:label xml:lang="pt">Área do Trabalho de Graduação</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/#DiplomaThesis"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#birthDate -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/#birthDate">
+        <rdfs:label xml:lang="en">birthDate</rdfs:label>
+        <rdfs:label xml:lang="pt">Data de Nascimento</rdfs:label>
+        <rdfs:comment xml:lang="pt">Data que o docente nasceu.</rdfs:comment>
+        <rdfs:range rdf:resource="&xsd;dateTime"/>
+        <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#code -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/#code">
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/#Discipline"/>
+        <rdfs:range rdf:resource="&xsd;integer"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#date -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/#date">
+        <rdfs:label xml:lang="en">Date</rdfs:label>
+        <rdfs:label xml:lang="pt">Data</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/#NewsItem"/>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/#Presentation"/>
+        <rdfs:range rdf:resource="&xsd;dateTime"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#edition -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/#edition">
+        <rdfs:label xml:lang="en">edition</rdfs:label>
+        <rdfs:label xml:lang="pt">Edição</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/#Book"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#email -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/#email">
+        <rdfs:label xml:lang="en">mail</rdfs:label>
+        <rdfs:label xml:lang="pt">Correio Eletrônico</rdfs:label>
+        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#endDate -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/#endDate">
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/#Lecture"/>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/#TemporaryEvent"/>
+        <rdfs:range rdf:resource="&xsd;dateTime"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topDataProperty"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#endHour -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/#endHour">
+        <rdfs:label xml:lang="en">endHour</rdfs:label>
+        <rdfs:label xml:lang="pt">Hora Final</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/#Lecture"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.cin.ufpe.br/openCIn/#hour"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#gender -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/#gender">
+        <rdfs:label xml:lang="en">gender</rdfs:label>
+        <rdfs:label xml:lang="pt">Gênero</rdfs:label>
+        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#homepage -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/#homepage">
+        <rdfs:label xml:lang="en">homepage</rdfs:label>
+        <rdfs:label xml:lang="pt">Página Pessoal</rdfs:label>
+        <rdfs:comment xml:lang="pt">Página na Web onde se encontra informações sobre o professor</rdfs:comment>
+        <rdfs:domain rdf:resource="http://purl.org/vocab/aiiso/schema#KnowledgeGrouping"/>
+        <rdfs:domain rdf:resource="http://www.aktors.org/ontology/portal#Organization"/>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/#Student"/>
+        <rdfs:range rdf:resource="&xsd;anyURI"/>
+        <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#hour -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/#hour">
+        <rdfs:label xml:lang="en">Hour</rdfs:label>
+        <rdfs:label xml:lang="pt">Hora</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/#NewsItem"/>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/#Thesis"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#idProfessor -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/#idProfessor">
+        <rdfs:label xml:lang="en">idProfessor</rdfs:label>
+        <rdfs:label xml:lang="pt">Login do professor</rdfs:label>
+        <rdfs:comment xml:lang="pt">Identifica o professor unicamente</rdfs:comment>
+        <rdfs:domain rdf:resource="http://purl.org/ontology/bibo/Document"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#images -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/#images">
+        <rdfs:domain rdf:resource="&owl;Thing"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#isbn -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/#isbn">
+        <rdfs:label xml:lang="en">ISBN</rdfs:label>
+        <rdfs:label xml:lang="pt">ISBN</rdfs:label>
+        <rdfs:comment xml:lang="pt">International Standard Book Number é um sistema que identifica numericamente os livros segundo o título, o autor, o país e a editora, individualizando-os inclusive por edição.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/#Book"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#issued -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/#issued">
+        <rdfs:label xml:lang="en">issued</rdfs:label>
+        <rdfs:label xml:lang="pt">Ano de Emissão</rdfs:label>
+        <rdfs:comment xml:lang="pt">Ano de emissão da publicação</rdfs:comment>
+        <rdfs:domain rdf:resource="http://purl.org/ontology/bibo/Document"/>
+        <rdfs:range rdf:resource="&xsd;decimal"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#keyWord -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/#keyWord">
+        <rdfs:label xml:lang="en">keyword</rdfs:label>
+        <rdfs:label xml:lang="pt">Palavra Chave</rdfs:label>
+        <rdfs:comment xml:lang="pt">Palavra-Chave resume os principais temas da publicação</rdfs:comment>
+        <rdfs:domain rdf:resource="http://purl.org/ontology/bibo/Document"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#keywords -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/#keywords">
+        <rdfs:label xml:lang="en">Keywords</rdfs:label>
+        <rdfs:label xml:lang="pt">Palavras-chave</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/#MastersThesis"/>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/#PhDThesis"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#knowledgeArea -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/#knowledgeArea">
+        <rdfs:label xml:lang="en">knowledgeArea</rdfs:label>
+        <rdfs:label xml:lang="pt">Área do Conhecimento</rdfs:label>
+        <rdfs:comment xml:lang="pt">Área do conhecimento da publicação</rdfs:comment>
+        <rdfs:domain rdf:resource="http://purl.org/ontology/bibo/Document"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#language -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/#language">
+        <rdfs:label xml:lang="en">language</rdfs:label>
+        <rdfs:label xml:lang="pt">Idioma</rdfs:label>
+        <rdfs:comment xml:lang="pt">Idioma do documento</rdfs:comment>
+        <rdfs:domain rdf:resource="http://purl.org/ontology/bibo/Document"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#lattes -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/#lattes">
+        <rdfs:label xml:lang="en">lattes</rdfs:label>
+        <rdfs:label xml:lang="pt">Lattes</rdfs:label>
+        <rdfs:comment xml:lang="pt">A Plataforma Lattes é uma plataforma, criada e mantida pelo CNPq, pelo que integra as bases de dados de currículos, grupos de pesquisa e instituições, em um único sistema de informações, das áreas de Ciência e Tecnologia, atuando no Brasil.</rdfs:comment>
+        <rdfs:range rdf:resource="&xsd;anyURI"/>
+        <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#location -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/#location">
+        <rdfs:label xml:lang="en">Location</rdfs:label>
+        <rdfs:label xml:lang="pt">Localização</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/#Lecture"/>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/#Presentation"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#name -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/#name">
+        <rdfs:label xml:lang="en">name</rdfs:label>
+        <rdfs:label xml:lang="pt">Nome</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/Technology"/>
+        <rdfs:range rdf:resource="&xsd;Name"/>
+        <rdfs:domain rdf:resource="&owl;Thing"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#nameCitation -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/#nameCitation">
+        <rdfs:label xml:lang="en">nameCitations</rdfs:label>
+        <rdfs:label xml:lang="pt">Nome em Citações</rdfs:label>
+        <rdfs:comment xml:lang="pt">Nome que deve ser usado quando o professor é citado em alguma bibliografia</rdfs:comment>
+        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#nature -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/#nature">
+        <rdfs:label xml:lang="en">nature</rdfs:label>
+        <rdfs:label xml:lang="pt">Natureza</rdfs:label>
+        <rdfs:comment xml:lang="pt">Caracterização da Publicação</rdfs:comment>
+        <rdfs:domain rdf:resource="http://purl.org/ontology/bibo/Document"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#numPages -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/#numPages">
+        <rdfs:label xml:lang="en">numPages</rdfs:label>
+        <rdfs:label xml:lang="pt">Número de Páginas</rdfs:label>
+        <rdfs:comment xml:lang="pt">Número de páginas do documento</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/#Book"/>
+        <rdfs:range rdf:resource="&xsd;decimal"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#number -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/#number">
+        <rdfs:label xml:lang="en">Number</rdfs:label>
+        <rdfs:label xml:lang="pt">Número</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/#MastersThesis"/>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/#PhDThesis"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#office -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/#office">
+        <rdfs:label xml:lang="en">office</rdfs:label>
+        <rdfs:label xml:lang="pt">Escritório</rdfs:label>
+        <rdfs:comment xml:lang="pt">Identificação do escritório do Professor</rdfs:comment>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+        <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#pageEnd -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/#pageEnd">
+        <rdfs:label xml:lang="en">pageEnd</rdfs:label>
+        <rdfs:label xml:lang="pt">Página Final</rdfs:label>
+        <rdfs:comment xml:lang="pt">Página que finaliza a publicação de determinada pessoa</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/#Article"/>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/#Chapter"/>
+        <rdfs:range rdf:resource="&xsd;decimal"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#pageStart -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/#pageStart">
+        <rdfs:label xml:lang="en">pageStart</rdfs:label>
+        <rdfs:label xml:lang="pt">Página Inicial</rdfs:label>
+        <rdfs:comment xml:lang="pt">Página que inicia a publicação de determinada pessoa</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/#Article"/>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/#Chapter"/>
+        <rdfs:range rdf:resource="&xsd;decimal"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#phone -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/#phone">
+        <rdfs:label xml:lang="en">phone</rdfs:label>
+        <rdfs:label xml:lang="pt">Telefone</rdfs:label>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+        <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#release -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/#release">
+        <rdfs:label xml:lang="en">release</rdfs:label>
+        <rdfs:label xml:lang="pt">Lançamento</rdfs:label>
+        <rdfs:comment xml:lang="pt">Meio de lançamento da publicação</rdfs:comment>
+        <rdfs:domain rdf:resource="http://purl.org/ontology/bibo/Document"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#semester -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/#semester">
+        <rdfs:label xml:lang="en">Semester</rdfs:label>
+        <rdfs:label xml:lang="pt">Semestre</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/#DiplomaThesis"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#siape -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/#siape">
+        <rdfs:label xml:lang="en">SIAPE</rdfs:label>
+        <rdfs:label xml:lang="pt">SIAPE</rdfs:label>
+        <rdfs:comment xml:lang="pt"> Sistema Integrado de Administração de Pessoal (SIAPE) é um cadastro obrigatório para todo servidor público</rdfs:comment>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#startDate -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/#startDate">
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/#Lecture"/>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/#TemporaryEvent"/>
+        <rdfs:range rdf:resource="&xsd;dateTime"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topDataProperty"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#startHour -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/#startHour">
+        <rdfs:label xml:lang="en">startHour</rdfs:label>
+        <rdfs:label xml:lang="pt">Hora Inicial</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/#Lecture"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.cin.ufpe.br/openCIn/#hour"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#subject -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/#subject">
+        <rdfs:label xml:lang="en">subject</rdfs:label>
+        <rdfs:label xml:lang="pt">Assunto</rdfs:label>
+        <rdfs:domain rdf:resource="http://purl.org/ontology/bibo/Document"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#subtitle -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/#subtitle">
+        <rdfs:label xml:lang="en">Subtitle</rdfs:label>
+        <rdfs:label xml:lang="pt">Subtítulo</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/#Lecture"/>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/#NewsItem"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#title -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/#title">
+        <rdfs:label xml:lang="en">title</rdfs:label>
+        <rdfs:label xml:lang="pt">Título</rdfs:label>
+        <rdfs:comment xml:lang="pt">Título do Documento</rdfs:comment>
+        <rdfs:domain rdf:resource="http://purl.org/ontology/bibo/Document"/>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/#Lecture"/>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/#NewsItem"/>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/#Thesis"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#type -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/#type">
+        <rdfs:label xml:lang="en">Type</rdfs:label>
+        <rdfs:label xml:lang="pt">Tipo</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/#Graduate"/>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/#Undergraduate"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#uri -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/#uri">
+        <rdfs:label xml:lang="en">URI</rdfs:label>
+        <rdfs:label xml:lang="pt">URI</rdfs:label>
+        <rdfs:comment xml:lang="pt">Uniform Resource Identifier é uma cadeia de caracteres compacta usada para identificar ou denominar um recurso na Internet.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://purl.org/ontology/bibo/Document"/>
+        <rdfs:range rdf:resource="&xsd;anyURI"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#workload -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/#workload">
+        <rdfs:comment>Carga horária de uma disciplina.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/#Discipline"/>
+        <rdfs:range rdf:resource="&xsd;decimal"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#year -->
+
+    <DatatypeProperty rdf:about="http://www.cin.ufpe.br/openCIn/#year">
+        <rdfs:range rdf:resource="&xsd;decimal"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#Link -->
+
+    <DatatypeProperty rdf:about="http://www.co-ode.org/ontologies/ont.owl#Link">
+        <rdfs:label xml:lang="en">Link</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/Project"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://xmlns.com/foaf/spec/#term_homepage -->
+
+    <DatatypeProperty rdf:about="http://xmlns.com/foaf/spec/#term_homepage">
+        <rdfs:label xml:lang="en">homepage</rdfs:label>
+        <rdfs:label xml:lang="pt">página na Web</rdfs:label>
+        <rdfs:comment xml:lang="en">A homepage for some thing</rdfs:comment>
+        <rdfs:comment xml:lang="pt">Uma página na Web para alguma coisa</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/Project"/>
+        <rdfs:range rdf:resource="&xsd;anyURI"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://xmlns.com/foaf/spec/#term_member -->
+
+    <DatatypeProperty rdf:about="http://xmlns.com/foaf/spec/#term_member">
+        <rdfs:label xml:lang="en">member</rdfs:label>
+        <rdfs:label xml:lang="pt">membro da equipe</rdfs:label>
+        <rdfs:comment xml:lang="en">Indicates a member of a Group</rdfs:comment>
+        <rdfs:comment xml:lang="pt">O membro de um grupo</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.cin.ufpe.br/openCIn/Project"/>
+        <rdfs:range rdf:resource="&xsd;Name"/>
+        <rdfs:range rdf:resource="&xsd;anyURI"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/ontology/bibo/Conference -->
+
+    <Class rdf:about="http://purl.org/ontology/bibo/Conference">
+        <rdfs:label xml:lang="en">Conference</rdfs:label>
+        <rdfs:label xml:lang="pt">Conferência</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.cin.ufpe.br/openCIn/#TemporaryEvent"/>
+        <disjointWith rdf:resource="http://www.cin.ufpe.br/openCIn/#Lecture"/>
+        <disjointWith rdf:resource="http://www.cin.ufpe.br/openCIn/#Presentation"/>
+        <rdfs:comment xml:lang="pt">Conferência é um Evento Temporário caracterizado por uma reunião com objetivo de debate, discussão e exposição de ideias/informações de caráter científico ou cultural.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://purl.org/ontology/bibo/Document -->
+
+    <Class rdf:about="http://purl.org/ontology/bibo/Document">
+        <rdfs:label xml:lang="en">Publication</rdfs:label>
+        <rdfs:label xml:lang="pt">Publicação</rdfs:label>
+    </Class>
+    
+
+
+    <!-- http://purl.org/vocab/aiiso/schema#Center -->
+
+    <Class rdf:about="http://purl.org/vocab/aiiso/schema#Center">
+        <rdfs:label xml:lang="en">Center</rdfs:label>
+        <rdfs:label xml:lang="pt">Centro</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.aktors.org/ontology/portal#Organization"/>
+        <rdfs:comment xml:lang="pt">Os Centros são órgãos reconhecidos pela Universidade com a finalidade de desenvolver o ensino, a pesquisa e a extensão. Os Centros podem corresponder tanto às áreas fundamentais do conhecimentos humanos quanto a áreas específicas de aplicação científica, cultural e profissional.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://purl.org/vocab/aiiso/schema#KnowledgeGrouping -->
+
+    <Class rdf:about="http://purl.org/vocab/aiiso/schema#KnowledgeGrouping">
+        <rdfs:label xml:lang="en">knowledgeGroup</rdfs:label>
+        <rdfs:label xml:lang="pt">Agrupamento Acadêmico</rdfs:label>
+        <disjointWith rdf:resource="http://www.aktors.org/ontology/portal#Organization"/>
+        <rdfs:comment xml:lang="pt"> Representa uma coleção de recursos acadêmicos com finalidade educacional ou de pesquisa num escopo bem definido dentro de uma Organização.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://www.aktors.org/ontology/portal#Academic -->
+
+    <Class rdf:about="http://www.aktors.org/ontology/portal#Academic">
+        <rdfs:label xml:lang="en">Academic</rdfs:label>
+        <rdfs:label xml:lang="pt">Docente</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+        <disjointWith rdf:resource="http://www.cin.ufpe.br/openCIn/#Student"/>
+        <rdfs:comment xml:lang="pt">Docente é um funcionário da Universidade que exerce, em seu âmbito, atividades de magistério superior. Atividades essas que correspondem à produção, ampliação e transmissão do saber.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://www.aktors.org/ontology/portal#Organization -->
+
+    <Class rdf:about="http://www.aktors.org/ontology/portal#Organization">
+        <rdfs:label xml:lang="en">Organization</rdfs:label>
+        <rdfs:label xml:lang="pt">Organização</rdfs:label>
+    </Class>
+    
+
+
+    <!-- http://www.aktors.org/ontology/portal#Project -->
+
+    <Class rdf:about="http://www.aktors.org/ontology/portal#Project">
+        <rdfs:label xml:lang="en">Project</rdfs:label>
+        <rdfs:label xml:lang="pt">Projeto</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.aktors.org/ontology/portal#Organization"/>
+        <rdfs:comment xml:lang="pt">Projeto é um plano de ações que envolve recursos humanos e materiais com objetivo definido e prazo determinado. Possui caráter educativo, social, científico ou tecnológico.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/CooperationProject -->
+
+    <Class rdf:about="http://www.cin.ufpe.br/openCIn/CooperationProject">
+        <rdfs:label xml:lang="en">cooperationProject</rdfs:label>
+        <rdfs:label xml:lang="pt">Projeto de Cooperação</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.cin.ufpe.br/openCIn/Project"/>
+        <rdfs:comment xml:lang="en">Cooperation Projects are the projects in which have partner with private enterprise, and also their goals are to develop searches in Information Technology area.</rdfs:comment>
+        <rdfs:comment xml:lang="pt">Projetos que possuem parceria com empresas privadas, e que visam o desenvolvimento de pesquisas na área de Tecnologia da Informação (TI).</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/GraduationProject -->
+
+    <Class rdf:about="http://www.cin.ufpe.br/openCIn/GraduationProject">
+        <rdfs:label xml:lang="en">inovationProject</rdfs:label>
+        <rdfs:label xml:lang="pt">Projeto de Inovação</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.cin.ufpe.br/openCIn/Project"/>
+        <rdfs:comment xml:lang="en">Projects that are developed by Informatic Center students with the goal to practice the knowledge obtained in University.</rdfs:comment>
+        <rdfs:comment xml:lang="pt">Projetos que são desenvolvidos pelos alunos do Centro de Informática com o objetivo de praticar os conhecimentos adquiridos na universidade.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/Project -->
+
+    <Class rdf:about="http://www.cin.ufpe.br/openCIn/Project">
+        <rdfs:label xml:lang="en">project</rdfs:label>
+        <rdfs:label xml:lang="pt">Projeto</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.cin.ufpe.br/openCIn/#TemporaryEvent"/>
+    </Class>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/Technology -->
+
+    <Class rdf:about="http://www.cin.ufpe.br/openCIn/Technology">
+        <rdfs:label xml:lang="en">Technology</rdfs:label>
+        <rdfs:label xml:lang="pt">Tecnologia</rdfs:label>
+        <rdfs:comment xml:lang="pt">Tecnologias na área de computação.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#Allocation -->
+
+    <Class rdf:about="http://www.cin.ufpe.br/openCIn/#Allocation">
+        <rdfs:label xml:lang="en">Allocation</rdfs:label>
+        <rdfs:label xml:lang="pt">Alocação</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.cin.ufpe.br/openCIn/#TemporaryEvent"/>
+        <rdfs:comment xml:lang="pt">Alocação é uma designação de um ou mais docentes para uma disciplina a ministrar durante um intervalo de tempo.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#Article -->
+
+    <Class rdf:about="http://www.cin.ufpe.br/openCIn/#Article">
+        <rdfs:label xml:lang="en">Article</rdfs:label>
+        <rdfs:label xml:lang="pt">Artigo</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/ontology/bibo/Document"/>
+        <disjointWith rdf:resource="http://www.cin.ufpe.br/openCIn/#Book"/>
+        <disjointWith rdf:resource="http://www.cin.ufpe.br/openCIn/#Chapter"/>
+        <disjointWith rdf:resource="http://www.cin.ufpe.br/openCIn/#Thesis"/>
+        <rdfs:comment xml:lang="pt">Artigo científico é o trabalho acadêmico que apresenta resultados sucintos de uma pesquisa realizada de acordo com o método científico aceito por uma comunidade de pesquisadores.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#Book -->
+
+    <Class rdf:about="http://www.cin.ufpe.br/openCIn/#Book">
+        <rdfs:label xml:lang="en">Book</rdfs:label>
+        <rdfs:label xml:lang="pt">Livro</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/ontology/bibo/Document"/>
+        <disjointWith rdf:resource="http://www.cin.ufpe.br/openCIn/#Chapter"/>
+        <disjointWith rdf:resource="http://www.cin.ufpe.br/openCIn/#Thesis"/>
+        <rdfs:comment xml:lang="pt">O livro é um produto intelectual e, como tal, encerra conhecimento e expressões individuais ou colectivas.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#Chapter -->
+
+    <Class rdf:about="http://www.cin.ufpe.br/openCIn/#Chapter">
+        <rdfs:label xml:lang="en">Chapter</rdfs:label>
+        <rdfs:label xml:lang="pt">Capítulo</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/ontology/bibo/Document"/>
+        <disjointWith rdf:resource="http://www.cin.ufpe.br/openCIn/#Thesis"/>
+        <rdfs:comment xml:lang="pt">Parte de um livro. Fechamento de um pensamento dentro um pensamento maior.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#DiplomaThesis -->
+
+    <Class rdf:about="http://www.cin.ufpe.br/openCIn/#DiplomaThesis">
+        <rdfs:label xml:lang="en">DiplomaThesis</rdfs:label>
+        <rdfs:label xml:lang="pt">Trabalho de Graduação</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.cin.ufpe.br/openCIn/#Thesis"/>
+        <disjointWith rdf:resource="http://www.cin.ufpe.br/openCIn/#MastersThesis"/>
+        <disjointWith rdf:resource="http://www.cin.ufpe.br/openCIn/#PhDThesis"/>
+    </Class>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#Discipline -->
+
+    <Class rdf:about="http://www.cin.ufpe.br/openCIn/#Discipline">
+        <rdfs:label xml:lang="en">Discipline</rdfs:label>
+        <rdfs:label xml:lang="pt">Disciplina</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/vocab/aiiso/schema#KnowledgeGrouping"/>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="http://www.cin.ufpe.br/openCIn/#prerequisite"/>
+                <someValuesFrom rdf:resource="http://www.cin.ufpe.br/openCIn/#Discipline"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="pt">Disciplina é um componente curricular oferecido por uma organização que possui associação.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#ExpertiseArea -->
+
+    <Class rdf:about="http://www.cin.ufpe.br/openCIn/#ExpertiseArea">
+        <rdfs:label xml:lang="en">expertiseArea</rdfs:label>
+        <rdfs:label xml:lang="pt">Área de Atuação</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.cin.ufpe.br/openCIn/www.aktors.org/ontology/portal#KnowledgeArea"/>
+        <disjointWith rdf:resource="http://www.cin.ufpe.br/openCIn/#InterestArea"/>
+        <rdfs:comment xml:lang="pt">É um conjunto de conhecimentos inter-relacionados segundo a natureza do objeto de investigação com finalidades de ensino, pesquisa e aplicações práticas.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#FullProfessor -->
+
+    <Class rdf:about="http://www.cin.ufpe.br/openCIn/#FullProfessor">
+        <rdfs:label xml:lang="en">FullProfessor</rdfs:label>
+        <rdfs:label xml:lang="pt">Interno</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.aktors.org/ontology/portal#Academic"/>
+        <disjointWith rdf:resource="http://www.cin.ufpe.br/openCIn/#VisitingProfessor"/>
+    </Class>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#Graduate -->
+
+    <Class rdf:about="http://www.cin.ufpe.br/openCIn/#Graduate">
+        <rdfs:label xml:lang="en">Graduate</rdfs:label>
+        <rdfs:label xml:lang="pt">Pós-Graduação</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.cin.ufpe.br/openCIn/www.aktors.org/ontology/portal#Course"/>
+        <disjointWith rdf:resource="http://www.cin.ufpe.br/openCIn/#Undergraduate"/>
+    </Class>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#InterestArea -->
+
+    <Class rdf:about="http://www.cin.ufpe.br/openCIn/#InterestArea">
+        <rdfs:label xml:lang="en">interestArea</rdfs:label>
+        <rdfs:label xml:lang="pt">Área de Interesse</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.cin.ufpe.br/openCIn/www.aktors.org/ontology/portal#KnowledgeArea"/>
+        <rdfs:comment xml:lang="pt">Especialização de uma ou mais Áreas de Atuação.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#Lecture -->
+
+    <Class rdf:about="http://www.cin.ufpe.br/openCIn/#Lecture">
+        <rdfs:label xml:lang="en">Lecture</rdfs:label>
+        <rdfs:label xml:lang="pt">Palestra</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.cin.ufpe.br/openCIn/#TemporaryEvent"/>
+        <disjointWith rdf:resource="http://www.cin.ufpe.br/openCIn/#Presentation"/>
+    </Class>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#MastersThesis -->
+
+    <Class rdf:about="http://www.cin.ufpe.br/openCIn/#MastersThesis">
+        <rdfs:label xml:lang="en">MastersThesis</rdfs:label>
+        <rdfs:label xml:lang="pt">Dissertação de Mestrado</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.cin.ufpe.br/openCIn/#Thesis"/>
+        <disjointWith rdf:resource="http://www.cin.ufpe.br/openCIn/#PhDThesis"/>
+    </Class>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#NewsItem -->
+
+    <Class rdf:about="http://www.cin.ufpe.br/openCIn/#NewsItem">
+        <rdfs:label xml:lang="en">NewsItem</rdfs:label>
+        <rdfs:label xml:lang="pt">Notícia</rdfs:label>
+        <rdfs:comment xml:lang="pt">Informações publicadas sobre defesas, eventos e projetos.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#Occupation -->
+
+    <Class rdf:about="http://www.cin.ufpe.br/openCIn/#Occupation">
+        <rdfs:label xml:lang="en">Occupation</rdfs:label>
+        <rdfs:label xml:lang="pt">Cargo</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.cin.ufpe.br/openCIn/#TemporaryEvent"/>
+        <rdfs:comment xml:lang="pt">Cargo é uma função pública exercida por uma Pessoa dentro de uma organização durante um intervalo de tempo.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#PhDThesis -->
+
+    <Class rdf:about="http://www.cin.ufpe.br/openCIn/#PhDThesis">
+        <rdfs:label xml:lang="en">PhDThesis</rdfs:label>
+        <rdfs:label xml:lang="pt">Tese de Doutorado</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.cin.ufpe.br/openCIn/#Thesis"/>
+    </Class>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#Presentation -->
+
+    <Class rdf:about="http://www.cin.ufpe.br/openCIn/#Presentation">
+        <rdfs:label xml:lang="en">Presentation</rdfs:label>
+        <rdfs:label xml:lang="pt">Defesa</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.cin.ufpe.br/openCIn/#TemporaryEvent"/>
+        <rdfs:comment xml:lang="pt">Apresentação do trabalho de conclusão dos cursos de graduação e pós-graduação do CIn.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#ResearchGroup -->
+
+    <Class rdf:about="http://www.cin.ufpe.br/openCIn/#ResearchGroup">
+        <rdfs:label xml:lang="en">researchGroup</rdfs:label>
+        <rdfs:label xml:lang="pt">Grupo de Pesquisa</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.aktors.org/ontology/portal#Organization"/>
+        <rdfs:comment xml:lang="pt">É definido como um conjunto de recursos humanos e materiais organizados hierarquicamente, guiados por uma linha de pesquisa acerca de uma Áreaa de Conhecimento.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#Student -->
+
+    <Class rdf:about="http://www.cin.ufpe.br/openCIn/#Student">
+        <rdfs:label xml:lang="en">Student</rdfs:label>
+        <rdfs:label xml:lang="pt">Discente</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    </Class>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#TemporaryEvent -->
+
+    <Class rdf:about="http://www.cin.ufpe.br/openCIn/#TemporaryEvent">
+        <rdfs:label xml:lang="en">temporaryEvent</rdfs:label>
+        <rdfs:label xml:lang="pt">Evento Temporário</rdfs:label>
+        <rdfs:comment xml:lang="pt">Evento que ocorre durante um intervalo de tempo definido.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#Thesis -->
+
+    <Class rdf:about="http://www.cin.ufpe.br/openCIn/#Thesis">
+        <rdfs:label xml:lang="en">Thesis</rdfs:label>
+        <rdfs:label xml:lang="pt">Trabalho de Conclusão</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/ontology/bibo/Document"/>
+    </Class>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#Undergraduate -->
+
+    <Class rdf:about="http://www.cin.ufpe.br/openCIn/#Undergraduate">
+        <rdfs:label xml:lang="en">Undergraduate</rdfs:label>
+        <rdfs:label xml:lang="pt">Graduação</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.cin.ufpe.br/openCIn/www.aktors.org/ontology/portal#Course"/>
+    </Class>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/#VisitingProfessor -->
+
+    <Class rdf:about="http://www.cin.ufpe.br/openCIn/#VisitingProfessor">
+        <rdfs:label xml:lang="en">VisitingProfessor</rdfs:label>
+        <rdfs:label xml:lang="pt">Convidado</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.aktors.org/ontology/portal#Academic"/>
+    </Class>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/www.aktors.org/ontology/portal#Course -->
+
+    <Class rdf:about="http://www.cin.ufpe.br/openCIn/www.aktors.org/ontology/portal#Course">
+        <rdfs:label xml:lang="en">Course</rdfs:label>
+        <rdfs:label xml:lang="pt">Curso</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.aktors.org/ontology/portal#Organization"/>
+        <rdfs:comment xml:lang="pt">Curso é um Agrupamento Acadêmico oferecido por um Centro com o objetivo de prover formação acadêmica em uma Área de Conhecimento.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/www.aktors.org/ontology/portal#KnowledgeArea -->
+
+    <Class rdf:about="http://www.cin.ufpe.br/openCIn/www.aktors.org/ontology/portal#KnowledgeArea">
+        <rdfs:label xml:lang="en">knowledgeArea</rdfs:label>
+        <rdfs:label xml:lang="pt">Área de Conhecimento</rdfs:label>
+        <rdfs:comment xml:lang="pt">Pode ser caracterizado como uma Área de Atuação ou Área de Interesse.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://www.cin.ufpe.br/openCIn/www.aktors.org/ontology/portal#University -->
+
+    <Class rdf:about="http://www.cin.ufpe.br/openCIn/www.aktors.org/ontology/portal#University">
+        <rdfs:label xml:lang="en">University</rdfs:label>
+        <rdfs:label xml:lang="pt">Universidade</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.aktors.org/ontology/portal#Organization"/>
+        <rdfs:comment xml:lang="pt">Universidade é uma Organização formada por Centros incubida de estimular atividades nos diversos campos de conhecimento e estender o ensino e pesquisa à comunidade, mediante cursos ou serviços especiais.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://www.co-ode.org/ontologies/ont.owl#Empresa -->
+
+    <Class rdf:about="http://www.co-ode.org/ontologies/ont.owl#Empresa">
+        <rdfs:label xml:lang="en">Company</rdfs:label>
+        <rdfs:label xml:lang="pt">Empresa</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.aktors.org/ontology/portal#Organization"/>
+    </Class>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/Person -->
+
+    <Class rdf:about="http://xmlns.com/foaf/0.1/Person">
+        <rdfs:label xml:lang="en">Person</rdfs:label>
+        <rdfs:label xml:lang="pt">Pessoa</rdfs:label>
+    </Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net -->
+

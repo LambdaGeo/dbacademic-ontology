@@ -1,0 +1,1124 @@
+@prefix : <http://openuai.ifpb.edu.br/ontoly/1.0/ouai#> .
+@prefix dbo: <http://dbpedia.org/ontology/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ouai: <http://openuai.ifpb.edu.br/ontoly/1.0/ouai#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix swpo: <http://sw-portal.deri.org/ontologies/swportal#> .
+@prefix vaem: <http://www.linkedmodel.org/schema/vaem#> .
+@prefix vivo: <http://vivoweb.org/ontology/core#> .
+@prefix bibtex: <http://purl.org/net/nknouf/ns/bibtex> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@base <http://purl.org/ontology/openuai#> .
+
+<http://purl.org/ontology/openuai#> rdf:type owl:Ontology ;
+                                     dcterms:creator "André Alencar" ,
+                                                     "Damires Souza" ,
+                                                     "Douglas Xavier" ,
+                                                     "Edemberg Rocha" ;
+                                     dcterms:date "2016-07-15"@en ;
+                                     dcterms:description "A Ontologia SIDE fornece classes e propriedaes para uso em aplicações criadas no IFPB ou qualquer outra Instituição Educacional ou organização em geral."@pt ,
+                                                         "The OUAI Ontology provides the classes and properties to be used in applications created at IFPB or any other Educational Institution or organization in general."@en ;
+                                     dcterms:identifier "http://openuai.ifpb.edu.br/ontology/ouai.rdf" ;
+                                     dcterms:license <https://creativecommons.org/licenses/by/4.0/legalcode> ;
+                                     dcterms:subject "Dados acadêmicos e sobre pesquisadores no contexto de plataformas acadêmicas como lattes, linkedin, research gate e academia"@pt ,
+                                                     "Data from academic platforms such as lattes, linkedin, research gate and academia"@en ;
+                                     dcterms:title "OUAI: Ontologia para Universidades e Informações Acadêmicas"@pt ,
+                                                   "OUAI: Ontology for Universities and Academic Information"@en ;
+                                     rdfs:comment "OUAI is an acronym for Ontology for Universities and Academic Information "@en ,
+                                                  "OUAI é a sigla para Ontologia para Universidades e Informação Acadêmica"@en ,
+                                                  "Ontologia criada pelo grupo de pesquisa SIDE do Instituto Federal e Educação, Ciência de Tecnologia da Paraíba (IFPB)    CC BY SIDE/IFPB 2016"@pt ,
+                                                  "Ontology created by the SIDE research group from the Federal Institute of Education, Science and Technology of Paraíba (Instituto Federal de Educação, Ciência e Tecnologia da Paraíba - IFPB)   CC BY SIDE/IFPB 2016"@en ;
+                                     rdfs:label "OUAI - Ontology for Universities and Academic Information"@en ,
+                                                "OUAI: Ontologia para Universidades e Informações Acadêmicas"@pt ;
+                                     owl:versionInfo "0.1" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://dbpedia.org/ontology/birthDate
+dbo:birthDate rdf:type owl:AnnotationProperty ;
+              rdfs:range xsd:dateTime ;
+              rdfs:domain dbo:Professor ,
+                          swpo:Researcher ,
+                          swpo:Student ,
+                          foaf:Person .
+
+
+###  http://purl.org/dc/terms/creator
+dcterms:creator rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/date
+dcterms:date rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/description
+dcterms:description rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/identifier
+dcterms:identifier rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/license
+dcterms:license rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/subject
+dcterms:subject rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/title
+dcterms:title rdf:type owl:AnnotationProperty ;
+              rdfs:range xsd:string ;
+              rdfs:domain dbo:Award ,
+                          dbo:ResearchProject ,
+                          dbo:Software ,
+                          <http://openuai.ifpb.edu.br/ontology/1.0/ouai#GeneralArea> ,
+                          ouai:Area ,
+                          ouai:ExtensionProject ,
+                          ouai:GeneralArea ,
+                          ouai:InnovationProject ,
+                          ouai:Subarea ,
+                          ouai:Subject ,
+                          <http://purl.org/ontology/bibo/Patent> ,
+                          swpo:Article ,
+                          swpo:Event ,
+                          swpo:Group ,
+                          swpo:Inproceedings ,
+                          swpo:Journal ,
+                          swpo:Proceedings ,
+                          swpo:Project ,
+                          swpo:Publication ,
+                          swpo:PublicationContainer ,
+                          swpo:Techreport ,
+                          vivo:Course ,
+                          vaem:Discipline ,
+                          foaf:Organization .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://dbpedia.org/ontology/editor
+dbo:editor rdf:type owl:ObjectProperty ;
+           rdfs:domain swpo:PublicationContainer ;
+           rdfs:range foaf:Person .
+
+
+###  http://dbpedia.org/ontology/projectCoordinator
+dbo:projectCoordinator rdf:type owl:ObjectProperty ;
+                       rdfs:domain swpo:Project ;
+                       rdfs:range dbo:Professor ,
+                                  swpo:Researcher .
+
+
+###  http://purl.org/dc/terms/hasLanguage
+dcterms:hasLanguage rdf:type owl:ObjectProperty ;
+                    rdfs:domain swpo:Publication ,
+                                foaf:Person ;
+                    rdfs:range dcterms:LinguisticSystem ;
+                    rdfs:label "has language"@en ,
+                               "tem idioma"@pt .
+
+
+###  http://purl.org/ontology/openuai#containsInProceedings
+:containsInProceedings rdf:type owl:ObjectProperty ;
+                       owl:inverseOf swpo:containedInProceedings ;
+                       rdfs:domain swpo:Proceedings ;
+                       rdfs:range swpo:Inproceedings ;
+                       rdfs:label "contains in proceedings"@en ,
+                                  "contém artigos em anais"@pt .
+
+
+###  http://purl.org/ontology/openuai#hasAdvisor
+:hasAdvisor rdf:type owl:ObjectProperty ;
+            owl:inverseOf :isAdvisorIn ;
+            rdfs:domain swpo:Project ;
+            rdfs:range dbo:Professor ,
+                       swpo:Researcher ;
+            rdfs:label "has advisor"@en ,
+                       "tem orientador"@pt .
+
+
+###  http://purl.org/ontology/openuai#hasBibliography
+:hasBibliography rdf:type owl:ObjectProperty ;
+                 rdfs:domain vaem:Discipline ;
+                 rdfs:range :Bibliography .
+
+
+###  http://purl.org/ontology/openuai#hasContent
+:hasContent rdf:type owl:ObjectProperty ;
+            rdfs:domain vaem:Discipline ;
+            rdfs:range :Content .
+
+
+###  http://purl.org/ontology/openuai#hasCoordinator
+:hasCoordinator rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf owl:topObjectProperty ;
+                owl:inverseOf :isCoordinatorIn ;
+                rdfs:domain dbo:ResearchProject ,
+                            :ExtensionProject ,
+                            :InnovationProject ,
+                            swpo:Project ;
+                rdfs:range dbo:Professor ,
+                           swpo:Researcher ;
+                rdfs:label "has coordinator"@en ,
+                           "tem coordenador"@pt .
+
+
+###  http://purl.org/ontology/openuai#hasDegree
+:hasDegree rdf:type owl:ObjectProperty ;
+           rdfs:domain foaf:Person ;
+           rdfs:range :AcademicDegree ;
+           rdfs:label "has degree"@en ,
+                      "tem grau academico"@pt .
+
+
+###  http://purl.org/ontology/openuai#hasExpertiseIn
+:hasExpertiseIn rdf:type owl:ObjectProperty ;
+                rdfs:domain foaf:Person ;
+                rdfs:range :Subject ;
+                rdfs:label "has expertise in"@en ,
+                           "tem expertise em"@pt .
+
+
+###  http://purl.org/ontology/openuai#hasInterestIn
+:hasInterestIn rdf:type owl:ObjectProperty ;
+               rdfs:domain foaf:Person ;
+               rdfs:range :GeneralArea ;
+               rdfs:label "has insterest in"@en ,
+                          "tem interesse em"@pt .
+
+
+###  http://purl.org/ontology/openuai#hasKnowledgeArea
+:hasKnowledgeArea rdf:type owl:ObjectProperty ;
+                  rdfs:domain <http://dbpedia.org/resource/EducationalInstitution> ,
+                              swpo:Group ,
+                              swpo:Project ,
+                              swpo:Publication ,
+                              swpo:PublicationContainer ,
+                              foaf:Person ;
+                  rdfs:range :GeneralArea ;
+                  rdfs:label "has knowledge area"@en ,
+                             "tem área de conhecimento"@pt .
+
+
+###  http://purl.org/ontology/openuai#hasParticipatedIn
+:hasParticipatedIn rdf:type owl:ObjectProperty ;
+                   rdfs:domain foaf:Person ;
+                   rdfs:range :ExaminingBoard ,
+                              swpo:Event ,
+                              swpo:Group ,
+                              swpo:Project ;
+                   rdfs:label "has participated in"@en ,
+                              "participou em"@pt .
+
+
+###  http://purl.org/ontology/openuai#hasProject
+:hasProject rdf:type owl:ObjectProperty ;
+            owl:inverseOf foaf:isPartOf ;
+            rdfs:domain swpo:Group ;
+            rdfs:range swpo:Project ;
+            rdfs:label "has project"@en ,
+                       "tem pojeto"@pt .
+
+
+###  http://purl.org/ontology/openuai#hasPublication
+:hasPublication rdf:type owl:ObjectProperty ;
+                owl:inverseOf swpo:hasAuthors ;
+                rdfs:domain foaf:Person ;
+                rdfs:range swpo:Publication ;
+                rdfs:label "has publication"@en ,
+                           "tem publicação"@pt .
+
+
+###  http://purl.org/ontology/openuai#hasScholarshipOf
+:hasScholarshipOf rdf:type owl:ObjectProperty ;
+                  rdfs:domain swpo:Student ;
+                  rdfs:range <http://dbpedia.org/resource/EducationalInstitution> ,
+                             swpo:ResearchInstitute ;
+                  rdfs:label "has scholarship of"@en ,
+                             "tem bolsa de"@pt .
+
+
+###  http://purl.org/ontology/openuai#hasSoftwareRegistration
+:hasSoftwareRegistration rdf:type owl:ObjectProperty ;
+                         rdfs:domain foaf:Person ;
+                         rdfs:range :SoftwareRegistration .
+
+
+###  http://purl.org/ontology/openuai#hasStudent
+:hasStudent rdf:type owl:ObjectProperty ;
+            owl:inverseOf :isVolunteerIn ;
+            rdfs:domain swpo:Project ;
+            rdfs:range swpo:Student ;
+            rdfs:label "has student"@en ,
+                       "tem estudante"@pt .
+
+
+###  http://purl.org/ontology/openuai#hasSubjectCourse
+:hasSubjectCourse rdf:type owl:ObjectProperty ;
+                  rdfs:domain vivo:Course ;
+                  rdfs:range vaem:Discipline ;
+                  rdfs:label "has Subject Course"@en ,
+                             "tem disciplinas"@pt .
+
+
+###  http://purl.org/ontology/openuai#isAdvisorIn
+:isAdvisorIn rdf:type owl:ObjectProperty ;
+             rdfs:domain dbo:Professor ,
+                         swpo:Researcher ;
+             rdfs:range swpo:Publication ;
+             rdfs:label "is advisor em"@en ,
+                        "é orientador em"@pt .
+
+
+###  http://purl.org/ontology/openuai#isAuthorOf
+:isAuthorOf rdf:type owl:ObjectProperty ;
+            owl:inverseOf swpo:hasAuthors ;
+            rdfs:domain swpo:Group ,
+                        foaf:Organization ,
+                        foaf:Person ;
+            rdfs:range dbo:Software ,
+                       <http://purl.org/ontology/bibo/Patent> ,
+                       swpo:Project ,
+                       swpo:Publication ;
+            rdfs:label "is author of"@en ,
+                       "é autor de"@pt .
+
+
+###  http://purl.org/ontology/openuai#isCoordinatorIn
+:isCoordinatorIn rdf:type owl:ObjectProperty ;
+                 rdfs:domain dbo:Professor ,
+                             swpo:Researcher ;
+                 rdfs:range swpo:Event ,
+                            swpo:Group ,
+                            swpo:Project ,
+                            vivo:Course ;
+                 rdfs:label "is coordinator in"@en ,
+                            "é coordenador em"@pt .
+
+
+###  http://purl.org/ontology/openuai#isMemberOf
+:isMemberOf rdf:type owl:ObjectProperty ;
+            rdfs:domain foaf:Person ;
+            rdfs:range <http://dbpedia.org/resource/EducationalInstitution> ,
+                       foaf:Organization .
+
+
+###  http://purl.org/ontology/openuai#isScholarshipHolderIn
+:isScholarshipHolderIn rdf:type owl:ObjectProperty ;
+                       rdfs:domain foaf:Person ;
+                       rdfs:range swpo:Project .
+
+
+###  http://purl.org/ontology/openuai#isStudying
+:isStudying rdf:type owl:ObjectProperty ;
+            rdfs:domain swpo:Student ;
+            rdfs:range vivo:Course ;
+            rdfs:label "está estudando"@pt ,
+                       "is studying"@en .
+
+
+###  http://purl.org/ontology/openuai#isVolunteerIn
+:isVolunteerIn rdf:type owl:ObjectProperty ;
+               rdfs:domain swpo:Student ;
+               rdfs:range swpo:Project ;
+               rdfs:label "is volunteer in"@en ,
+                          "é voluntário em"@pt .
+
+
+###  http://purl.org/ontology/openuai#reviewedBy
+:reviewedBy rdf:type owl:ObjectProperty ;
+            rdfs:domain swpo:Publication ;
+            rdfs:range foaf:Person .
+
+
+###  http://purl.org/ontology/openuai#studiesAt
+:studiesAt rdf:type owl:ObjectProperty ;
+           rdfs:domain swpo:Student ;
+           rdfs:range <http://dbpedia.org/resource/EducationalInstitution> ;
+           rdfs:label "estuda em"@pt ,
+                      "studies at"@en .
+
+
+###  http://purl.org/ontology/openuai#teachesAt
+:teachesAt rdf:type owl:ObjectProperty ;
+           rdfs:domain dbo:Professor ;
+           rdfs:range <http://dbpedia.org/resource/EducationalInstitution> ;
+           rdfs:label "ensina em"@pt ,
+                      "teaches at"@en .
+
+
+###  http://purl.org/ontology/openuai#teachesDiscipline
+:teachesDiscipline rdf:type owl:ObjectProperty ;
+                   rdfs:domain dbo:Professor ;
+                   rdfs:range vaem:Discipline ;
+                   rdfs:label "ensina disciplina"@pt ,
+                              "teaches discipline"@en .
+
+
+###  http://sw-portal.deri.org/ontologies/swportal#containedInProceedings
+swpo:containedInProceedings rdf:type owl:ObjectProperty ;
+                            rdfs:domain swpo:Inproceedings ;
+                            rdfs:range swpo:Proceedings ;
+                            rdfs:label "contained in proceedings"@en ,
+                                       "em anais"@pt .
+
+
+###  http://sw-portal.deri.org/ontologies/swportal#containsArticles
+swpo:containsArticles rdf:type owl:ObjectProperty ;
+                      owl:inverseOf swpo:publishedBy ;
+                      rdfs:domain swpo:PublicationContainer ;
+                      rdfs:range swpo:Publication ;
+                      rdfs:label "contains articles"@en ,
+                                 "contém artigos"@pt .
+
+
+###  http://sw-portal.deri.org/ontologies/swportal#hasAuthors
+swpo:hasAuthors rdf:type owl:ObjectProperty ;
+                rdfs:domain swpo:Publication ;
+                rdfs:range foaf:Person ;
+                rdfs:label "has authors"@en ,
+                           "tem autores"@pt .
+
+
+###  http://sw-portal.deri.org/ontologies/swportal#organizedby
+swpo:organizedby rdf:type owl:ObjectProperty ;
+                 owl:inverseOf swpo:organizes ;
+                 rdfs:domain swpo:Event ;
+                 rdfs:range swpo:Group ,
+                            foaf:Organization ,
+                            foaf:Person .
+
+
+###  http://sw-portal.deri.org/ontologies/swportal#organizes
+swpo:organizes rdf:type owl:ObjectProperty ;
+               rdfs:domain swpo:Group ,
+                           foaf:Organization ,
+                           foaf:Person ;
+               rdfs:range swpo:Event .
+
+
+###  http://sw-portal.deri.org/ontologies/swportal#publishedBy
+swpo:publishedBy rdf:type owl:ObjectProperty ;
+                 rdfs:domain swpo:Publication ;
+                 rdfs:range swpo:Group ,
+                            foaf:Organization ,
+                            foaf:Person ;
+                 rdfs:label "publicado por"@pt ,
+                            "published by"@en .
+
+
+###  http://xmlns.com/foaf/0.1/isPartOf
+foaf:isPartOf rdf:type owl:ObjectProperty ;
+              rdfs:domain swpo:Project ;
+              rdfs:range swpo:Group ;
+              rdfs:label "faz parte de"@pt ,
+                         "is parte of"@en .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://dbpedia.org/ontology/birthDate
+dbo:birthDate rdf:type owl:DatatypeProperty .
+
+
+###  http://purl.org/dc/terms/title
+dcterms:title rdf:type owl:DatatypeProperty .
+
+
+###  http://purl.org/net/nknouf/ns/bibtex#ISBN
+<http://purl.org/net/nknouf/ns/bibtex#ISBN> rdf:type owl:DatatypeProperty ;
+                                            rdfs:domain swpo:PublicationContainer ;
+                                            rdfs:range xsd:string ;
+                                            rdfs:comment "Padrão internacional de numeração de livros"@pt ,
+                                                         "The International Standard Book Number"@en ;
+                                            rdfs:label "ISBN"@en ,
+                                                       "ISBN"@pt .
+
+
+###  http://purl.org/net/nknouf/ns/bibtex#keyword
+<http://purl.org/net/nknouf/ns/bibtex#keyword> rdf:type owl:DatatypeProperty ;
+                                               rdfs:domain swpo:Publication ;
+                                               rdfs:range xsd:string ;
+                                               rdfs:label "keyword"@en ,
+                                                          "palavra-chave"@pt .
+
+
+###  http://purl.org/ontology/openuai#ISSN
+:ISSN rdf:type owl:DatatypeProperty ;
+      rdfs:domain swpo:PublicationContainer ;
+      rdfs:range xsd:string ;
+      rdfs:comment "The International Standard Serial Number. Used to identify a journal."@en ,
+                   """The International Standard Serial Number. Used to identify a journal.
+Padrão internacional de número sequencial. Usado para indetificar uma revista científica."""@pt ;
+      rdfs:label "ISSN"@pt .
+
+
+###  http://purl.org/ontology/openuai#abbreviation
+:abbreviation rdf:type owl:DatatypeProperty ;
+              rdfs:domain dbo:Award ,
+                          dbo:Software ,
+                          :AcademicDegree ,
+                          :GeneralArea ,
+                          swpo:Event ,
+                          swpo:Group ,
+                          swpo:Project ,
+                          swpo:PublicationContainer ,
+                          vivo:Course ,
+                          vaem:Discipline ,
+                          foaf:Organization ;
+              rdfs:range rdfs:Literal ;
+              owl:propertyDisjointWith :acronym ;
+              rdfs:label "abbreviation"@en ,
+                         "abreviação"@pt .
+
+
+###  http://purl.org/ontology/openuai#about
+:about rdf:type owl:DatatypeProperty ;
+       rdfs:domain dbo:Award ,
+                   <http://purl.org/ontology/bibo/Patent> ,
+                   swpo:Event ,
+                   swpo:Group ,
+                   swpo:Project ,
+                   swpo:Publication ,
+                   swpo:PublicationContainer ,
+                   vivo:Course ,
+                   vaem:Discipline ,
+                   foaf:Organization ;
+       rdfs:range xsd:string ;
+       rdfs:label "about"@en ,
+                  "sobre"@pt .
+
+
+###  http://purl.org/ontology/openuai#acronym
+:acronym rdf:type owl:DatatypeProperty ;
+         rdfs:domain dbo:Award ,
+                     <http://purl.org/ontology/bibo/Patent> ,
+                     swpo:Event ,
+                     swpo:Group ,
+                     swpo:Project ,
+                     swpo:Publication ,
+                     swpo:PublicationContainer ,
+                     vivo:Course ,
+                     vaem:Discipline ,
+                     foaf:Organization ;
+         rdfs:range rdfs:Literal ;
+         rdfs:label "acronym"@en ,
+                    "sigla"@pt .
+
+
+###  http://purl.org/ontology/openuai#citationName
+:citationName rdf:type owl:DatatypeProperty ;
+              rdfs:domain foaf:Person ;
+              rdfs:range xsd:string ;
+              rdfs:label "citation name"@en ,
+                         "nome de citação"@pt .
+
+
+###  http://purl.org/ontology/openuai#description
+:description rdf:type owl:DatatypeProperty ;
+             rdfs:domain dbo:Award ,
+                         dbo:Software ,
+                         dcterms:LinguisticSystem ,
+                         <http://purl.org/ontology/bibo/Patent> ,
+                         :AcademicDegree ,
+                         :ExaminingBoard ,
+                         :GeneralArea ,
+                         swpo:Event ,
+                         swpo:Group ,
+                         swpo:Project ,
+                         swpo:Publication ,
+                         swpo:PublicationContainer ,
+                         vivo:Course ,
+                         vaem:Discipline ,
+                         foaf:Organization ,
+                         foaf:Person ;
+             rdfs:range xsd:string ;
+             rdfs:label "description"@en ,
+                        "descrição"@pt .
+
+
+###  http://purl.org/ontology/openuai#finishDate
+:finishDate rdf:type owl:DatatypeProperty ;
+            rdfs:domain swpo:Group ,
+                        swpo:Project ;
+            rdfs:range xsd:dateTime ;
+            rdfs:label "data Final"@pt ,
+                       "finish date"@en .
+
+
+###  http://purl.org/ontology/openuai#gender
+:gender rdf:type owl:DatatypeProperty ;
+        rdfs:domain foaf:Person ;
+        rdfs:range xsd:string ;
+        rdfs:label "gender"@en ,
+                   "gênero"@pt .
+
+
+###  http://purl.org/ontology/openuai#lattesURL
+:lattesURL rdf:type owl:DatatypeProperty ;
+           rdfs:domain foaf:Person ;
+           rdfs:range xsd:anyURI ;
+           rdfs:label "URL do Lattes"@pt ,
+                      "lattes URL"@en .
+
+
+###  http://purl.org/ontology/openuai#startDate
+:startDate rdf:type owl:DatatypeProperty ;
+           rdfs:domain swpo:Group ,
+                       swpo:Project ;
+           rdfs:range xsd:dateTime ;
+           rdfs:label "Data Inicial"@pt ,
+                      "start date"@en .
+
+
+###  http://purl.org/ontology/openuai#status
+:status rdf:type owl:DatatypeProperty ;
+        rdfs:domain swpo:Project ;
+        rdfs:range xsd:string ;
+        rdfs:label "situação"@pt ,
+                   "status"@en .
+
+
+###  http://vivoweb.org/sites/vivoweb.org/files/vivo-isf-public-1.6.owl#patentNumber
+<http://vivoweb.org/sites/vivoweb.org/files/vivo-isf-public-1.6.owl#patentNumber> rdf:type owl:DatatypeProperty ;
+                                                                                  rdfs:domain <http://purl.org/ontology/bibo/Patent> ;
+                                                                                  rdfs:range xsd:string .
+
+
+###  http://www.w3.org/ns/regorg#registration
+<http://www.w3.org/ns/regorg#registration> rdf:type owl:DatatypeProperty ;
+                                           rdfs:domain dbo:Software ;
+                                           rdfs:range xsd:string .
+
+
+###  http://xmlns.com/foaf/0.1/name
+foaf:name rdf:type owl:DatatypeProperty ;
+          rdfs:domain foaf:Person ;
+          rdfs:range xsd:string ;
+          rdfs:label "name"@en ,
+                     "nome"@pt .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://dbpedia.org/ontology/Award
+dbo:Award rdf:type owl:Class ;
+          rdfs:comment "Award won by a Person, Musical or other Work, RaceHorse, Building, etc"@en ,
+                       "Prêmio ganhado por uma Pessoa, Musical ou outro Trabalho, RaceHorse, Edifício, etc"@pt ;
+          rdfs:label "Award"@en ,
+                     "Prêmio"@pt .
+
+
+###  http://dbpedia.org/ontology/Professor
+dbo:Professor rdf:type owl:Class ;
+              rdfs:subClassOf foaf:Person ;
+              rdfs:comment "A person whose role is Professor in a  Project. The Professor can be also a Researcher."@en ,
+                           "Uma pessoa cujo papel é Professor num Projeto. O Professor pode ser também um Pesquisador."@pt ;
+              rdfs:label "Professor"@en ,
+                         "Professor"@pt .
+
+
+###  http://dbpedia.org/ontology/ResearchProject
+dbo:ResearchProject rdf:type owl:Class ;
+                    rdfs:subClassOf swpo:Project ;
+                    rdfs:comment "It aims to research some issues in a determined Knowledge Area, and topics."@en ,
+                                 "Tem por objetivo pesquisar problemas de determinada Área de Conhecimento e tópicos."@pt ;
+                    rdfs:label "Projeto de Pesquisa"@pt ,
+                               "Research Project"@en .
+
+
+###  http://dbpedia.org/ontology/Software
+dbo:Software rdf:type owl:Class ;
+             rdfs:comment "A set of logical components of a computer or data processing system; Program, routine or set of instructions that control the operation of a computer; Software."@en ,
+                          "Conjunto de componentes lógicos de um computador ou sistema de processamento de dados; programa, rotina ou conjunto de instruções que controlam o funcionamento de um computador; suporte lógico."@pt ;
+             rdfs:label "Software"@en ,
+                        "Software"@pt .
+
+
+###  http://dbpedia.org/resource/EducationalInstitution
+<http://dbpedia.org/resource/EducationalInstitution> rdf:type owl:Class ;
+                                                     rdfs:subClassOf foaf:Organization ;
+                                                     rdfs:comment "An academic institution where a person belongs (or is part of), such as university, college, school."@en ,
+                                                                  "Uma instituição acadêmica à qual uma pessoa pertente (ou faz parte), como universidade, faculdade, escola."@pt ;
+                                                     rdfs:label "Educational Institution"@en ,
+                                                                "Instituição Educacional"@pt .
+
+
+###  http://linguistics-ontology.org/gold/Process
+<http://linguistics-ontology.org/gold/Process> rdf:type owl:Class ;
+                                               rdfs:subClassOf <http://purl.org/ontology/bibo/Patent> ;
+                                               rdfs:comment "A classe de coisas que acontecem e têm partes temporais ou estágios. Exemplos incluem eventos prolongados como um jogo de futebol ou uma corrida, ações como perseguir e ler, e processos biológicos."@pt ,
+                                                            "The class of things that happen and have temporal parts or stages. Examples include extended events like a football match or a race, actions like pursuing and reading, and biological processes"@en ;
+                                               rdfs:label "Process"@en ,
+                                                          "Processo"@pt .
+
+
+###  http://purl.org/dc/terms/LinguisticSystem
+dcterms:LinguisticSystem rdf:type owl:Class ;
+                         rdfs:comment "A system of signs, symbols, sounds, gestures or rules used in communication."@en ,
+                                      "Um sistema de sinais, símbolos, sons, gestos ou regras usadas na comunicação."@pt ;
+                         rdfs:label "Idioma"@pt ,
+                                    "Linguistic System"@en .
+
+
+###  http://purl.org/ontology/bibo/Patent
+<http://purl.org/ontology/bibo/Patent> rdf:type owl:Class ;
+                                       rdfs:comment "A document describing the exclusive right granted by a government to an inventor to manufacture, use, or sell an invention for a certain number of years."@en ,
+                                                    "Um documento que descreve o direito exclusivo concedido por um governo a um inventor para fabricar, usar ou vender uma invenção por um certo número de anos."@pt ;
+                                       rdfs:label "Patent"@en ,
+                                                  "Patente"@pt .
+
+
+###  http://purl.org/ontology/openuai#AcademicDegree
+:AcademicDegree rdf:type owl:Class ;
+                rdfs:comment "Educational level that some Person (as Student) is currently studying or the degree which a person (Student, Professor or Researcher) has already concluded."@en ,
+                             "Nível educacional que alguma Pessoa (no papel de Estudante) está atulamente estudando or o grau que uma Pessoa (Estudante, Professor ou Pesquisador) já concluiu."@pt ;
+                rdfs:label "Academic Degree"@en ,
+                           "Grau Acadêmico"@pt .
+
+
+###  http://purl.org/ontology/openuai#Area
+:Area rdf:type owl:Class ;
+      rdfs:subClassOf :GeneralArea ;
+      rdfs:comment "Campo de estudo mais específico que Área de Conhecimento, ao qual está relacionado um curso de qualquer grau acadêmico. Aplica-se também a publicações, projetos etc. Baseia-se na Tabela de Áreas de Conhecimento da Capes e do CNPq."@pt ,
+                   "Study field, more specific than Knowledge Area, which a course of any academic degree is related to. Used also for publications, projects etc. Based on Knowledge Area Table from Capes and CNPq."@en ;
+      rdfs:label "Area"@en ,
+                 "Subárea de Conhecimentoto"@pt ;
+      rdfs:seeAlso "https://www.capes.gov.br/images/stories/download/avaliacao/TabelaAreasConhecimento_072012.pdf" .
+
+
+###  http://purl.org/ontology/openuai#Associate
+:Associate rdf:type owl:Class ;
+           rdfs:subClassOf :Graduate ;
+           rdfs:comment "American Undergraduate degree, in the same level of Bachelor, Licentiate or Technologist, with focus on Tech, but which has shorter workload, about two years"@en ,
+                        "Graduação americana, no mesmo nível de Bacharelado, Licenciatura ou Tecnólogo, com foco em Tecnologia, mas com carga horária menor, cerca de dois anos"@pt ;
+           rdfs:label "Associate"@en ,
+                      "Associate"@pt .
+
+
+###  http://purl.org/ontology/openuai#Bachelor
+:Bachelor rdf:type owl:Class ;
+          rdfs:subClassOf :Graduate ;
+          rdfs:comment "Graduate degree, with four years duration or more, in several Knowledge Areas, such as Medical, Laws, Pedagogy, Computer Science etc"@en ,
+                       "Graduação, com quatro anos de duração ou mais, em diversas Áreas de Conhecimento, como Medicina, Direito, Pedagoia, Ciência da Computação etc"@pt ;
+          rdfs:label "Bacharelado"@pt ,
+                     "Bachelor"@en .
+
+
+###  http://purl.org/ontology/openuai#Bibliography
+:Bibliography rdf:type owl:Class .
+
+
+###  http://purl.org/ontology/openuai#Content
+:Content rdf:type owl:Class .
+
+
+###  http://purl.org/ontology/openuai#CourseSubjectProject
+:CourseSubjectProject rdf:type owl:Class ;
+                      rdfs:subClassOf swpo:Project ;
+                      rdfs:label "Course Subject Project"@en .
+
+
+###  http://purl.org/ontology/openuai#Doctorate
+:Doctorate rdf:type owl:Class ;
+           owl:equivalentClass :PhD ;
+           rdfs:subClassOf :StrictoSensu ;
+           rdfs:comment "Postgraduate classified as Stricto Sensu, with about three or four years duration, in any Knowledge Area. It is a level after Master"@en ,
+                        "Pós-graduação classificada como Stricto Sensu, com cerca de três ou quatro anos de duração, em qualquer Área de Conhecimento. É um nível posterior ao Mestrado"@pt ;
+           rdfs:label "Doctorate"@en ,
+                      "Doutorado"@pt .
+
+
+###  http://purl.org/ontology/openuai#ExaminingBoard
+:ExaminingBoard rdf:type owl:Class ;
+                rdfs:comment "Group of people, whether professors, researchers or managers, who examine the performance and/or work of a person or group in order to grant a academic degree, to admit he/she/them for a job or to concede an award."@en ,
+                             "Grupo de pessoas, sejam professores, pesquisadores ou gestores que avaliam o desempenho e/ou a obra de uma pessoa ou grupo para fim de concessão de título acadêmico, admissão profissional ou premiação."@pt ;
+                rdfs:label "Banca"@pt ,
+                           "Examining Board"@en .
+
+
+###  http://purl.org/ontology/openuai#ExtensionProject
+:ExtensionProject rdf:type owl:Class ;
+                  rdfs:subClassOf swpo:Project ;
+                  rdfs:comment "Extension projects are actions that involve consulting, advisory services, courses, symposia, conferences, seminars, debates, lectures, social, artistic, sports and other related actions, individually or collectively."@en ,
+                               "São considerados projetos de extensão ações que envolvam consultorias, assessorias, cursos, simpósios, conferências, seminários, debates, palestras, ações sociais, artísticas, esportivas e outras afins, propostas individual ou coletivamente."@pt ;
+                  rdfs:label "Extension Project"@en ,
+                             "Projeto de Extensão"@pt .
+
+
+###  http://purl.org/ontology/openuai#GeneralArea
+:GeneralArea rdf:type owl:Class ;
+             rdfs:comment "Campo de estudo ao qual está relacionado um curso de qualquer grau de acadêmico,  uma publicação, um projeto etc. Baseia-se na Tabela de Áreas de Conhecimento da Capes e do CNPq."@pt ,
+                          "Study field of a course of any academic degree, publication, project etc. Based on Knowledge Area Table from Capes and CNPq."@en ;
+             rdfs:label "General Area"@en ,
+                        "Área de Conhecimento"@pt ;
+             rdfs:seeAlso "https://www.capes.gov.br/images/stories/download/avaliacao/TabelaAreasConhecimento_072012.pdf" .
+
+
+###  http://purl.org/ontology/openuai#Graduate
+:Graduate rdf:type owl:Class ;
+          rdfs:subClassOf :AcademicDegree ;
+          rdfs:comment "Academic degree that comes after High School for professional education."@en ,
+                       "Grau acadêmico que vem depois do Ensino Médico para formação profissional."@pt ;
+          rdfs:label "Graduate"@en ,
+                     "Graduação"@pt .
+
+
+###  http://purl.org/ontology/openuai#InnovationProject
+:InnovationProject rdf:type owl:Class ;
+                   rdfs:subClassOf swpo:Project ;
+                   rdfs:label "Innovation Project"@en ,
+                              "Projeto de Inovação"@pt .
+
+
+###  http://purl.org/ontology/openuai#LatoSensu
+:LatoSensu rdf:type owl:Class ;
+           rdfs:subClassOf :PostGraduate ;
+           dcterms:description "Classficiation of Academic Degree: Postgraduate which has short workload, such as MBA or Specialization."@en ,
+                               "Classificação de Grau Acadêmico: Pós-Graduação em que a carga horária é menor, como é o caso do MBA ou Especialização."@pt ;
+           rdfs:label "Lato Sensu"@en ,
+                      "Lato Sensu"@pt .
+
+
+###  http://purl.org/ontology/openuai#Licentiate
+:Licentiate rdf:type owl:Class ;
+            rdfs:subClassOf :Graduate ;
+            rdfs:comment "Graduate degree, with four years duration or more, in some Knowledge Areas, such as History, Geography, Biology and others, but focused on teaching, that is to prepare teachers"@en ,
+                         "Graduação, com quatro anos de duração ou mais, em algumas Áreas de Conhecimneto, como História, Geografia, Biologia e outras, mas com foco no ensino, ou seka, em preparar professores"@pt ;
+            rdfs:label "Licenciatura"@pt ,
+                       "Licentiate"@en .
+
+
+###  http://purl.org/ontology/openuai#MBA
+:MBA rdf:type owl:Class ;
+     rdfs:subClassOf :LatoSensu ;
+     rdfs:comment "Postgraduate classified as Lato Sensu, with a little more than one year duration, and focused on Administration, Management or Businesses Studies field"@en ,
+                  "Pós-graduação classificada como Lato Sensu, com pouco mais de um ano de duração, e focada em Administração, Gestão ou Estudos da área de Negócios"@pt ;
+     rdfs:label "MBA"@en ,
+                "MBA"@pt .
+
+
+###  http://purl.org/ontology/openuai#Master
+:Master rdf:type owl:Class ;
+        rdfs:subClassOf :StrictoSensu ;
+        rdfs:comment "Postgraduate classified as Stricto Sensu, with about two years duration, in any Knowledge Area"@en ,
+                     "Pós-graduação classificada como Stricto Sensu, com cerca de dois anos de duração, em qualquer Área de Conhecimento."@pt ;
+        rdfs:label "Master"@en ,
+                   "Mestrado"@pt .
+
+
+###  http://purl.org/ontology/openuai#PhD
+:PhD rdf:type owl:Class ;
+     rdfs:subClassOf :StrictoSensu ;
+     rdfs:comment "Postgraduate classified as Stricto Sensu, with about three or four years duration, in any Knowledge Area. It is a level after Doctor"@en ,
+                  "Pós-graduação classificada como Stricto Sensu, com cerca de três ou quatro anos de duração, em qualquer Área de Conhecimento. É um nível posterior ao Doutorado"@pt ;
+     rdfs:label "PhD"@en ,
+                "PhD"@pt .
+
+
+###  http://purl.org/ontology/openuai#PostGraduate
+:PostGraduate rdf:type owl:Class ;
+              rdfs:subClassOf :AcademicDegree ;
+              rdfs:comment "Academic degree that comes after Graduate degree, in a higher level."@en ,
+                           "Grau acadêmico que vem depois da Graduação, num nível mais elevado."@pt ;
+              rdfs:label "Postgraduate"@en ,
+                         "Pós-Graduando"@pt .
+
+
+###  http://purl.org/ontology/openuai#SoftwareRegistration
+:SoftwareRegistration rdf:type owl:Class .
+
+
+###  http://purl.org/ontology/openuai#Specialization
+:Specialization rdf:type owl:Class ;
+                rdfs:subClassOf :LatoSensu ;
+                rdfs:comment "Postgraduate classified as Lato Sensu, with a little more than one year duration, in any filed or Knowledge Area"@en ,
+                             "Pós-graduação classificada como Lato Sensu, com pouco mais de um ano de duração, em qualquer campo ou Área de Conhecimento"@pt ;
+                rdfs:label "Especialização"@pt ,
+                           "Specialization"@en .
+
+
+###  http://purl.org/ontology/openuai#StrictoSensu
+:StrictoSensu rdf:type owl:Class ;
+              rdfs:subClassOf :PostGraduate ;
+              dcterms:description "Classficiation of Academic Degree: Postgraduate which has large workload and focus on academic career, such as Master, Doctor and PhD, respectively"@en ,
+                                  "Classificação de Grau Acadêmico: Pós-Graduação em que a carga horária é ampla, com foco na carreira acadêmica, como é o caso do Mestrado, Doutorado ou PhD, respectivamente"@pt ;
+              rdfs:label "Stricto Sensu"@en ,
+                         "Stricto Sensu"@pt .
+
+
+###  http://purl.org/ontology/openuai#Subarea
+:Subarea rdf:type owl:Class ;
+         rdfs:subClassOf :Area ;
+         rdfs:comment "Campo de estudo mais específico que Área, ao qual está relacionado um curso de qualquer grau acadêmico. Aplica-se também a publicações, projetos etc. Baseia-se na Tabela de Áreas de Conhecimento da Capes e do CNPq."@pt ,
+                      "Study field, more specific than Area, which a course of any academic degree is related to. Used also for publications, projects etc. Based on Knowledge Area Table from Capes and CNPq."@en ;
+         rdfs:label "Subarea"@en ,
+                    "Subarea"@pt ;
+         rdfs:seeAlso "https://www.capes.gov.br/images/stories/download/avaliacao/TabelaAreasConhecimento_072012.pdf" .
+
+
+###  http://purl.org/ontology/openuai#Subject
+:Subject rdf:type owl:Class ;
+         rdfs:subClassOf :Subarea ;
+         rdfs:comment "Campo de estudo mais específico que Subárea, ao qual está relacionado um curso de qualquer grau acadêmico. Aplica-se também a publicações, projetos etc. Baseia-se na Tabela de Áreas de Conhecimento da Capes e do CNPq."@pt ,
+                      "Study field, more specific than Subarea, which a course from any academic degree is related to. Used also for publications, projects etc. Based on Knowledge Area Table from Capes and CNPq."@en ;
+         rdfs:label "Disciplina"@pt ,
+                    "Subject"@en ;
+         rdfs:seeAlso "https://www.capes.gov.br/images/stories/download/avaliacao/TabelaAreasConhecimento_072012.pdf" .
+
+
+###  http://purl.org/ontology/openuai#Technologist
+:Technologist rdf:type owl:Class ;
+              rdfs:subClassOf :Graduate ;
+              rdfs:comment "Graduação com dois ou três anos de duração e específica na área de Tecnologia"@pt ,
+                           "Undergraduate degree with about two or three years of duration and specific in Ttech field"@en ;
+              rdfs:label "Technologist"@en ,
+                         "Tecnólogo"@pt .
+
+
+###  http://sw-portal.deri.org/ontologies/swportal#Article
+swpo:Article rdf:type owl:Class ;
+             rdfs:subClassOf swpo:Publication ;
+             rdfs:comment "An Article which was included and released in a journal (e.g. Magazine, Newspaper etc.)."@en ,
+                          "Um Artigo que foi incluído e divulgado em periódico (e.g. Revista, Jornal etc.)."@pt ;
+             rdfs:label "Article"@en ,
+                        "Artigo"@pt .
+
+
+###  http://sw-portal.deri.org/ontologies/swportal#Book
+swpo:Book rdf:type owl:Class ;
+          rdfs:subClassOf swpo:PublicationContainer ;
+          rdfs:comment "A book with an explicit publisher."@en ,
+                       "Um livro com um editor explícito."@pt ;
+          rdfs:label "Book"@en ,
+                     "Livro"@pt .
+
+
+###  http://sw-portal.deri.org/ontologies/swportal#Conference
+swpo:Conference rdf:type owl:Class ;
+                rdfs:subClassOf swpo:Event ;
+                rdfs:comment "Esta classe representa todos os tipos de conferências no domínio acadêmico."@pt ,
+                             "This class represents all kinds of conferences in the academic domain."@en ;
+                rdfs:label "Conference"@en ,
+                           "Conferência"@pt .
+
+
+###  http://sw-portal.deri.org/ontologies/swportal#Event
+swpo:Event rdf:type owl:Class ;
+           rdfs:comment "Esta classe representa eventos relevantes para a área de ensino, pesquisa, negócios, ou seja, conferências, apresentações, tutoriais, oficinas e palestras."@pt ,
+                        "This class represents events relevant for the area of teaching, research, business, i.e. conferences, presentations, tutorials, workshops and lectures."@en ;
+           rdfs:label "Event"@en ,
+                      "Evento"@pt .
+
+
+###  http://sw-portal.deri.org/ontologies/swportal#Group
+swpo:Group rdf:type owl:Class ;
+           owl:disjointUnionOf ( dbo:Professor
+                                 swpo:Student
+                               ) ;
+           rdfs:comment "A Group of people composed of Professors and Students."@en ,
+                        "Um Grupo de pessoas composto por Prefessores e Estudantes."@pt ;
+           rdfs:label "Group"@en ,
+                      "Grupo"@pt .
+
+
+###  http://sw-portal.deri.org/ontologies/swportal#Inproceedings
+swpo:Inproceedings rdf:type owl:Class ;
+                   rdfs:subClassOf swpo:Publication ;
+                   rdfs:comment "Any kind of publication which contains other publications, such as journal, proceedings, series etc."@en ,
+                                "Qualquer tipo de publicação que contém outras publicações, como periódico, congressos, séries etc."@pt ;
+                   rdfs:label "Artigo de Anais"@pt ,
+                              "In Proceedings"@en .
+
+
+###  http://sw-portal.deri.org/ontologies/swportal#Journal
+swpo:Journal rdf:type owl:Class ;
+             rdfs:subClassOf swpo:PublicationContainer ;
+             rdfs:comment "A scientific journal or magazine in which academic articles are published."@en ,
+                          "Um periódico ou revista científica onde artigos acadêmicos são publicados."@pt ;
+             rdfs:label "Journal"@en ,
+                        "Revista Científica"@pt .
+
+
+###  http://sw-portal.deri.org/ontologies/swportal#Lecture
+swpo:Lecture rdf:type owl:Class ;
+             rdfs:subClassOf swpo:Event ;
+             rdfs:comment "Esta classe representa palestras com um propósito educacional, por exemplo, dentro de uma universidade."@pt ,
+                          "This class represents lectures with an educational purpose, e.g within a university."@en ;
+             rdfs:label "Lecture"@en ,
+                        "Palestra"@pt .
+
+
+###  http://sw-portal.deri.org/ontologies/swportal#MasterThesis
+swpo:MasterThesis rdf:type owl:Class ;
+                  rdfs:subClassOf swpo:Publication ;
+                  rdfs:comment "A thesis written to receive a Master degree."@en ,
+                               "Uma tese escrita para receber um mestrado."@pt ;
+                  rdfs:label "Master Thesis"@en ,
+                             "Tese de Mestrado"@pt .
+
+
+###  http://sw-portal.deri.org/ontologies/swportal#Presentation
+swpo:Presentation rdf:type owl:Class ;
+                  rdfs:subClassOf swpo:Event ;
+                  rdfs:comment "Esta classe representa todos os tipos de apresentações."@pt ,
+                               "This class represents all kinds of presentations."@en ;
+                  rdfs:label "Apresentação"@pt ,
+                             "Presentation"@en .
+
+
+###  http://sw-portal.deri.org/ontologies/swportal#Proceedings
+swpo:Proceedings rdf:type owl:Class ;
+                 rdfs:subClassOf swpo:PublicationContainer ;
+                 rdfs:comment "Periódico que contém artigos apresentados em uma Conferência (i.e. In Proceedings)."@pt ,
+                              "Publication Container which contains the articles presented in a Conference (i.e. In Proceedings)."@en ;
+                 rdfs:label "Anais"@pt ,
+                            "Proceedings"@en .
+
+
+###  http://sw-portal.deri.org/ontologies/swportal#Project
+swpo:Project rdf:type owl:Class ;
+             rdfs:comment "Any project developed by Student, Professor and/or Researcher inside a Organization, either Educational Institution or Research Institute."@en ,
+                          "Qualquer projeto desenvolvido por Estudante, Professor e/ou Pesquisador dentro de uma Organização, seja Instituição Educacional ou Instituto de Pesquisa, "@pt ;
+             rdfs:label "Project"@en ,
+                        "Projeto"@pt .
+
+
+###  http://sw-portal.deri.org/ontologies/swportal#Publication
+swpo:Publication rdf:type owl:Class ;
+                 rdfs:comment "Any document published by a Person whose role is Student, Professor or Researcher."@en ,
+                              "Qualquer documento publicado por uma Pessoa cujo papel é Estudante,Professor ou Pesquisador."@pt ;
+                 rdfs:label "Publication"@en ,
+                            "Publicação"@pt .
+
+
+###  http://sw-portal.deri.org/ontologies/swportal#PublicationContainer
+swpo:PublicationContainer rdf:type owl:Class ;
+                          rdfs:comment "Any media which have periodic publications and in which articles and other publications can be published or released."@en ,
+                                       "Qualquer meio de comunicação que tem publicações periódicas e no qual artigos e outras publicações podem ser publicadas ou divulgadas."@pt ;
+                          rdfs:label "Periódico"@pt ,
+                                     "Publication Container"@en .
+
+
+###  http://sw-portal.deri.org/ontologies/swportal#ResearchInstitute
+swpo:ResearchInstitute rdf:type owl:Class ;
+                       rdfs:subClassOf foaf:Organization ;
+                       rdfs:comment "An Organization which main goal is doing and funding researches."@en ,
+                                    "Uma Organização cujo principal objetivo é fazer e financiar pesquisas."@pt ;
+                       rdfs:label "Instituto de Pesquisa"@pt ,
+                                  "Research Institute"@en .
+
+
+###  http://sw-portal.deri.org/ontologies/swportal#Researcher
+swpo:Researcher rdf:type owl:Class ;
+                rdfs:subClassOf foaf:Person ;
+                rdfs:comment "A Person whose role is Researcher in a Research Project. The Researcher can be a Professor or a Student."@en ,
+                             "Uma Pessoa cujo papel é de Pesquisador num Projeto de Pesquisa. O Pesquisador pode ser um Professor ou um Estudante."@pt ;
+                rdfs:label "Pesquisador"@pt ,
+                           "Researcher"@en .
+
+
+###  http://sw-portal.deri.org/ontologies/swportal#Student
+swpo:Student rdf:type owl:Class ;
+             rdfs:subClassOf foaf:Person ;
+             rdfs:comment "A person whose role is Student in a  Project. The Student can be also a Researcher."@en ,
+                          "Uma pessoa cujo papel é Estudante num Projeto. O Estudante pode ser também um Pesquisador."@pt ;
+             rdfs:label "Estudante"@pt ,
+                        "Student"@en .
+
+
+###  http://sw-portal.deri.org/ontologies/swportal#Techreport
+swpo:Techreport rdf:type owl:Class ;
+                rdfs:subClassOf swpo:Publication ;
+                rdfs:comment "A Tech Report about results of a Project developed."@en ,
+                             "Um Relatório Técnico sobre resultados de um Projeto desenvolvido."@pt ;
+                rdfs:label "Relatório Técnico"@pt ,
+                           "Tech Report"@en .
+
+
+###  http://sw-portal.deri.org/ontologies/swportal#Workshop
+swpo:Workshop rdf:type owl:Class ;
+              rdfs:subClassOf swpo:Event ;
+              rdfs:comment "Esta classe representa todos os tipos de oficinas"@pt ,
+                           "This class represents all kinds of workshops"@en ;
+              rdfs:label "Oficina"@pt ,
+                         "Workshop"@en .
+
+
+###  http://vivoweb.org/ontology/core#Course
+vivo:Course rdf:type owl:Class ;
+            rdfs:comment "A set of subjects or specific components in a school, college or university, with low or high workload."@en ,
+                         "Um conjunto de disciplinas em uma escola, faculdade ou universidade, com carga horária curta ou longa. "@pt ;
+            rdfs:label "Course"@en ,
+                       "Curso"@pt .
+
+
+###  http://vivoweb.org/ontology/core#Editorship
+vivo:Editorship rdf:type owl:Class ;
+                rdfs:subClassOf foaf:Organization ;
+                rdfs:comment "A relationship that represents the recognition of an agent as an editor"@en ,
+                             "Um relacionamento que representa o reconhecimento de um agente como editor"@pt ;
+                rdfs:label "Editor"@pt ,
+                           "Editorship"@en .
+
+
+###  http://www.bbc.co.uk/ontologies/bbc/Product
+<http://www.bbc.co.uk/ontologies/bbc/Product> rdf:type owl:Class ;
+                                              rdfs:subClassOf <http://purl.org/ontology/bibo/Patent> ;
+                                              rdfs:comment "Associa o WebDocument com o Produto da BBC em particular ao qual pertence. Isso reflete a marca editorial do produto."@pt ,
+                                                           "Associates the WebDocument with the particular BBC Product it belongs to. This reflects the editorial branding of the product."@en ;
+                                              rdfs:label "Product"@en ,
+                                                         "Produto"@pt .
+
+
+###  http://www.linkedmodel.org/schema/vaem#Discipline
+vaem:Discipline rdf:type owl:Class ;
+                rdfs:comment "A course subject is a specific area of work or study. Examples of disciplines in the engineering domain are electrical engineering, mechanical engineering and, in the financial domain, risk assessment, investment analysis."@en ,
+                             "Uma disciplina é uma área específica de trabalho ou estudo. Exemplos de disciplinas no domínio da engenharia são engenharia elétrica, engenharia mecânica e, no domínio financeiro, avaliação de risco, análise de investimentos."@en ;
+                rdfs:label "CourseSubject"@en ,
+                           "Disciplina de Curso"@pt .
+
+
+###  http://xmlns.com/foaf/0.1/Organization
+foaf:Organization rdf:type owl:Class ;
+                  rdfs:comment "Instituições, institutos, fundações, empresas e todo o tipo de organização pública ou privada, que é um conjunto de pessoas e recursos com algum propósito comum."@pt ,
+                               "Institutions, institutes, foundations, enterprises and any kind of private or public organization, which is a set of people and resources with some common purpose."@en ;
+                  rdfs:label "Organization"@en ,
+                             "Organização"@pt .
+
+
+###  http://xmlns.com/foaf/0.1/Person
+foaf:Person rdf:type owl:Class ;
+            rdfs:comment "Any people involved with an Educational Institution (i.e. EducationalInstitution class) who is a Professor or Student, and may be a Researcher."@en ,
+                         "Qualquer pessoa envolvida numa Instituição Educacional (i.e. classe EducationalInstitution), que é Professor ou Estudante, e  que pode ser Pesquisador."@pt ;
+            rdfs:label "Person"@en ,
+                       "Pessoa"@pt .
+
+
+#################################################################
+#    Annotations
+#################################################################
+
+dbo:birthDate rdfs:label "birthdate"@en ,
+                         "data de nascimento"@pt .
+
+
+dcterms:title rdfs:label "title"@en ,
+                         "título"@pt .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
